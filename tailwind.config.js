@@ -9,7 +9,14 @@ module.exports = {
     extend: {
       fontFamily: {
         main: ['"Poppins"', 'sans-serif'],
-      }
+      },
+      colors: {
+        purple1: '#E2D4F0',
+        purple2: '#D0B7E6',
+        purple3: '#A06ECE',
+        purple4: '#7126B5',
+        purple5: '#4B1979',
+      },
     },
   },
   plugins: [],
