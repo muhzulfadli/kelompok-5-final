@@ -65,7 +65,7 @@ const Login = () => {
         <div className="w-full lg:w-1/3">
           <div className="container h-screen">
             <div className="flex flex-col gap-4 justify-center h-full mx-8">
-              <TbArrowNarrowLeft className="my-4 block lg:hidden" />
+              <Link to="/"><TbArrowNarrowLeft className="my-4 block lg:hidden" /></Link>
               <div className="flex flex-col grow lg:grow-0 gap-2 text-xs w-full justify-center">
                 <div className="flex flex-row items-center gap-2 bg-purple4 p-3 w-fit font-semibold text-white rounded-md text-xs">
                   <img
