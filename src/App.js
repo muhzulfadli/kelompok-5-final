@@ -6,6 +6,7 @@ import Logout from "./Pages/Logout/Logout";
 import Layouts from './Layouts/Layouts';
 import ProductPreview from './Pages/Product/ProductPreview';
 import Product from './Pages/Product/Product';
+import Notification from "./Pages/Notification/Notification";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
             <Route index element={<h1>Ini Home</h1>} />
             <Route path="/ProductSeller" element={<Product />} />
             <Route path="/ProductPreview" element={<ProductPreview />} />
+            <Route path="notification" element={<Notification />} />
           </Route>
         </Routes>
       </div>
