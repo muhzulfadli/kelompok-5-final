@@ -18,13 +18,13 @@ export default class AutoPlay extends Component {
       <div>
         <Slider {...settings}>
           <div>
-          <img src="/images/imgbanner.png" />
+          <img src="/images/imgbanner.png" alt="banner" />
           </div>
           <div>
-          <img src="/images/imgbanner.png" />
+          <img src="/images/imgbanner.png" alt="banner" />
           </div>
           <div>
-          <img src="/images/imgbanner.png" />
+          <img src="/images/imgbanner.png" alt="banner" />
           </div>
         </Slider>
       </div>
