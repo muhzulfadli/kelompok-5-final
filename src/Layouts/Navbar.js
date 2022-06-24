@@ -40,14 +40,16 @@ const Navbar = () => {
             {/* web view start */}
             <div className="hidden lg:flex items-center justify-between">
               <div className="flex w-5/12 items-center justify-between gap-6">
-                <div className="flex flex-row items-center px-4 py-2 rounded text-purple4 text-sm font-semibold">
-                  <img
-                    src="/images/handshaker-ungu.svg "
-                    className="w-9 h-9 mr-2"
-                    alt=""
-                  />
-                  SecondHand
-                </div>
+              <Link to='/'>
+                  <div className="flex flex-row items-center px-4 py-2 rounded text-purple4 text-sm font-semibold">
+                    <img
+                      src="/images/handshaker-ungu.svg "
+                      className="w-9 h-9 mr-2"
+                      alt=""
+                    />
+                    SecondHand
+                  </div>
+                </Link>
                 <div className="flex-1">
                   <div className="flex items-center justify-between space-x-4 rounded-2xl bg-white px-6 py-3 md:bg-slate-100">
                     <form>
@@ -173,3 +175,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
