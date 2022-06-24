@@ -8,6 +8,9 @@ import ProductPreview from './Pages/Product/ProductPreview';
 import Notification from "./Pages/Notification/Notification";
 import ProductPagebuyer from './Pages/Product/ProductPagebuyer';
 import ProductList from './Pages/List/ProductList'
+import Homepage from "./Pages/Homepage/Homepage";
+import AddProduct from "./Pages/Product/AddProduct";
+import EditProduct from "./Pages/Product/EditProduct";
 
 const App = () => {
   return (
@@ -18,10 +21,12 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="logout" element={<Logout />} />
           <Route path="/" element={<Layouts />}>
-            <Route index element={<h1>Ini Home</h1>} />
+            <Route index element={<Homepage />} />
             <Route path="/productlist" element={<ProductList />} />
-            <Route path="/productpagebuyer" element={<ProductPagebuyer />} />
+            <Route path="/productdetail" element={<ProductPagebuyer />} />
             <Route path="/productpreview" element={<ProductPreview />} />
+            <Route path="/addproduct" element={<AddProduct />} />
+            <Route path="/editproduct" element={<EditProduct />} />
             <Route path="notification" element={<Notification />} />
           </Route>
         </Routes>
