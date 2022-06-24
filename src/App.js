@@ -5,7 +5,8 @@ import Register from "./Pages/Register/Register";
 import Logout from "./Pages/Logout/Logout";
 import Layouts from './Layouts/Layouts';
 import ProductPreview from './Pages/Product/ProductPreview';
-import Product from './Pages/Product/Product';
+import ProductPagebuyer from './Pages/Product/ProductPagebuyer'
+import ProductList from './Pages/List/ProductList'
 
 const App = () => {
   return (
@@ -16,9 +17,10 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="logout" element={<Logout />} />
           <Route path="/" element={<Layouts />}>
-            <Route index element={<h1>Ini Home</h1>} />
-            <Route path="/ProductSeller" element={<Product />} />
-            <Route path="/ProductPreview" element={<ProductPreview />} />
+          <Route path="/productlist" element={<ProductList />} />
+            <Route path="/productpagebuyer" element={<ProductPagebuyer />} />
+            <Route path="/productpreview" element={<ProductPreview />} />
+
           </Route>
         </Routes>
       </div>
