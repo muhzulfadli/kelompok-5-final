@@ -71,7 +71,7 @@ const Navbar = () => {
                 <div className="relative inline-block text-left">
                   <div className="relative w-full mb-1 bg-white text-lg font-medium focus:outline-none" onClick={handleNotification}>
                     <BiBell className="cursor-pointer" />
-                    <div className="bg-green-500 w-2 h-2 rounded-full absolute top-0 ml-2"></div>
+                    <div className="bg-red-500 w-1.5 h-1.5 rounded-full absolute top-0 ml-2"></div>
                     {showNotification && <NotificationCard />}
                   </div>
                 </div>
