@@ -12,7 +12,7 @@ const Dropdown = () => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex justify-center w-full mb-1 bg-white text-lg font-medium focus:outline-none cursor-pointer">
+        <Menu.Button className="flex justify-center w-full mb-1 bg-white text-lg font-medium focus:outline-none cursor-pointer">
           <BiUser className="cursor-pointer" />
         </Menu.Button>
       </div>
