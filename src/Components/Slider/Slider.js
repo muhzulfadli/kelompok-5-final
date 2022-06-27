@@ -9,10 +9,19 @@ export default class AutoPlay extends Component {
       centerPadding: "180px",
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: true,
       speed: 5000,
-      autoplaySpeed: 3000,
-      cssEase: "linear"
+      cssEase: "linear",
+      responsive: [
+        {
+          breakpoint: 480,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 1
+          }
+        }
+      ]
     };
     return (
       <div>
