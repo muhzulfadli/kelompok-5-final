@@ -34,7 +34,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="sticky top-0">
+      <div className="z-40 sticky top-0">
         <div className="flex justify-center bg-white px-0 py-5 lg:shadow-lg">
           <div className="container">
             {/* web view start */}

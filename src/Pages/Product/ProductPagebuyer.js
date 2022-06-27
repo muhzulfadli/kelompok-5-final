@@ -2,6 +2,7 @@ import React,{Component, useState} from "react";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import {AiOutlineClose} from "react-icons/ai";
 
 export class Fade extends Component {
     constructor(props) {
@@ -57,6 +58,8 @@ export class Fade extends Component {
 
 function ProductPagebuyer() {
   const [isOpen, setIsOpen] = useState(false);
+  const [alertOpen, setAlertOpen] = useState(true);
+  const [buttonClick, setButtonClick] = useState(true);
   return (
   <div className="container mx-auto max-w-4xl mt-5">
     <div className="grid grid-cols-5 gap-6">
@@ -79,7 +82,18 @@ function ProductPagebuyer() {
           <p className="text-sm font-normal text-[#8A8A8A]">aksesoris</p>
           <p className="font-normal text-base">Rp 250.000</p>
           {/* modals */}
-          <button onClick={ () => setIsOpen(true)} className="bg-[#7126B5] w-full py-3 mt-2 rounded-2xl font-medium text-sm text-white" id="tertarik-btn">Saya tertarik dan ingin nego</button>
+          {buttonClick?(
+                <button onClick={ () => setIsOpen(true)} className="bg-[#7126B5] w-full py-3 mt-2 rounded-2xl font-medium text-sm text-white" id="tertarik-btn">Saya tertarik dan ingin nego</button> 
+              ):(
+                <button className="bg-[#D0D0D0] w-full py-3 mt-2 rounded-2xl font-medium text-sm text-white" id="tertarik-btn">Menunggu respon penjual</button> 
+              )}
+              {/* alert */}
+              <div className={`bg-[#73CA5C] rounded-xl fixed top-2 w-[500px] inset-x-1/2 -translate-x-1/2 px-6 py-2 justify-between flex text-white ${alertOpen ? "hidden":""}`}>
+            <h2 className="text-white my-auto">Harga tawarmu berhasil dikirim ke penjual</h2>
+            <div role="button" onClick={ () => setAlertOpen(true)} className="my-auto">
+            <AiOutlineClose/>
+            </div>
+          </div>
 
           <div className={`bg-black bg-opacity-50 absolute top-0 left-0 inset-0 ${isOpen ? "flex":"hidden"} justify-center items-center`} id="overlay">
             <div className="bg-white rounded-2xl">
@@ -95,7 +109,7 @@ function ProductPagebuyer() {
               </div>
               <div className="col-span-2 pt-1 p-6">
               <div className="flex shadow-auto rounded-2xl p-3 bg-[#b8b7b776]"> 
-              <img className="w-14 rounded-xl" src="/images/picprofile.png" alt=""/>
+              <img className="w-14 rounded-xl" src="/images/picprofile.png"/>
               <div className="ml-4">
               <h1 className="font-medium text-sm">Jam Tangan Casio</h1>
               <h1 className="text-sm font-normal ">Rp 250.000</h1>
@@ -111,7 +125,7 @@ function ProductPagebuyer() {
           </div>
           </div> 
           </div>
-          <button onClick={ () => setIsOpen(true)} className="bg-[#7126B5] w-full py-3 mt-5 rounded-2xl font-medium text-sm text-white" id="tertarik-btn">Kirim</button>
+          <button onClick={ () => {setAlertOpen(false); setIsOpen(false); setButtonClick(false)}} className="bg-[#7126B5] w-full py-3 mt-5 rounded-2xl font-medium text-sm text-white" id="tertarik-btn">Kirim</button>
           </div>
           </div>
           </div>
@@ -122,7 +136,7 @@ function ProductPagebuyer() {
           {/* modals end */}
         <div className="col-span-2 mt-5">
           <div className="flex shadow-auto rounded-2xl p-4"> 
-          <img className="w-12" src="/images/picprofile.png" alt=""/>
+          <img className="w-12" src="/images/picprofile.png"/>
           <div className="ml-4">
           <h1 className="font-medium text-sm">Nama Penjual</h1>
           <h1 className="text-sm font-normal text-[#8A8A8A]">kota</h1>
@@ -132,7 +146,6 @@ function ProductPagebuyer() {
       </div>
     </div>
   </div>
-
   );
 }
 
