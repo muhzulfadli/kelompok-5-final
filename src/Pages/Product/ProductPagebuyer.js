@@ -61,16 +61,32 @@ export class Fade extends Component {
 }
 
 function ProductPagebuyer() {
-
   const [isOpen, setIsOpen] = useState(false);
   const [alertOpen, setAlertOpen] = useState(true);
   const [buttonClick, setButtonClick] = useState(true);
-  
   return (
-    <div className="container mx-auto max-w-4xl mt-5">
-      <div className="grid grid-cols-5 gap-6">
+    <div className="container mx-auto w-full lg:max-w-4xl md:py-5">
+      <div className="grid grid-cols-3 lg:grid-cols-5 gap-6">
         <div className="col-span-3">
           <Fade></Fade>
+          {/* responsive */}
+          <div className="container mx-auto max-w-4xl mt-3 -translate-y-12">
+            <div className="shadow-auto rounded-lg p-4 bg-white text-base font-medium h-28 mx-4 px-3 md:hidden">
+              <h2 className="text-base font-medium">Jam Tangan casio</h2>
+              <p className="text-sm font-normal text-[#8A8A8A]">aksesoris</p>
+              <p className="font-normal text-base">Rp 250.000</p>
+            </div>
+          </div>
+          {/* responsive penjual */}
+          <div className="container mx-auto max-w-4xl mt-3 -translate-y-11">
+            <div className="flex md:hidden shadow-auto rounded-lg bg-white p-4 text-base font-medium  mx-4 px-3">
+              <img className="w-12" src="/images/picprofile.png" alt="" />
+              <div className="ml-4">
+                <h1 className="font-medium text-sm">Nama Penjual</h1>
+                <h1 className="text-sm font-normal text-[#8A8A8A]">kota</h1>
+              </div>
+            </div>
+          </div>
           <div className="container mx-auto max-w-4xl mt-5">
             <div className="col-span-3">
               <div className="shadow-auto rounded-lg p-4 ">
@@ -99,7 +115,7 @@ function ProductPagebuyer() {
           </div>
         </div>
         <div className="col-span-2">
-          <div className="shadow-auto rounded-lg p-5">
+          <div className="shadow-auto rounded-lg p-5 md:block hidden">
             <h2 className="text-base font-medium">Jam Tangan casio</h2>
             <p className="text-sm font-normal text-[#8A8A8A]">aksesoris</p>
             <p className="font-normal text-base">Rp 250.000</p>
@@ -107,7 +123,7 @@ function ProductPagebuyer() {
             {buttonClick ? (
               <button
                 onClick={() => setIsOpen(true)}
-                className="bg-[#7126B5] w-full py-3 mt-2 rounded-2xl font-medium text-sm text-white"
+                className="bg-purple4 w-full py-3 mt-2 rounded-2xl font-medium text-sm text-white"
                 id="tertarik-btn"
               >
                 Saya tertarik dan ingin nego
@@ -141,7 +157,7 @@ function ProductPagebuyer() {
             <div
               className={`bg-black bg-opacity-50 absolute top-0 left-0 inset-0 ${
                 isOpen ? "flex" : "hidden"
-              } justify-center items-center`}
+              } justify-center items-center z-50`}
               id="overlay"
             >
               <div className="bg-white rounded-2xl">
@@ -206,7 +222,7 @@ function ProductPagebuyer() {
                       setIsOpen(false);
                       setButtonClick(false);
                     }}
-                    className="bg-[#7126B5] w-full py-3 mt-5 rounded-2xl font-medium text-sm text-white"
+                    className="bg-purple4 w-full py-3 mt-5 rounded-2xl font-medium text-sm text-white"
                     id="tertarik-btn"
                   >
                     Kirim
@@ -218,7 +234,7 @@ function ProductPagebuyer() {
 
           {/* modals end */}
           <div className="col-span-2 mt-5">
-            <div className="flex shadow-auto rounded-2xl p-4">
+            <div className="md:flex hidden shadow-auto rounded-2xl p-4">
               <img className="w-12" src="/images/picprofile.png" alt="" />
               <div className="ml-4">
                 <h1 className="font-medium text-sm">Nama Penjual</h1>

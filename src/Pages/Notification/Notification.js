@@ -9,7 +9,7 @@ const Notification = () => {
         <div className="lg:hidden font-bold text-2xl py-4 absolute top-3 ml-48 z-50 ">
           Notifikasi
         </div>
-        <div className="fw-full flex flex-col lg:flex-row justify-center gap-8 lg:gap-16 my-8">
+        <div className="w-full flex flex-col lg:flex-row justify-center gap-8 lg:gap-16 my-8">
           <div className="hidden lg:flex items-start mt-4">
             <Link to="/"><IoArrowBack /></Link>
           </div>
@@ -17,7 +17,7 @@ const Notification = () => {
             <div className="w-full flex py-4 gap-4">
               <div>
                 <img
-                  src="/images/profile.png"
+                  src="/images/picprofile.png"
                   alt=""
                   className="rounded-md cover"
                 />
@@ -38,7 +38,7 @@ const Notification = () => {
             <div className="flex py-6 gap-4 border-t-[1px] border-gray-300">
               <div>
                 <img
-                  src="/images/profile.png"
+                  src="/images/picprofile.png"
                   alt=""
                   className="rounded-md cover"
                 />

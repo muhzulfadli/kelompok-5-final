@@ -16,7 +16,8 @@ const Navbar = () => {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(true);
   const handleNotification = () => setShowNotification(true);
-
+  const closeNotification = () => setShowNotification(false);
+   
   const showButton = () => {
     if (window.innerWidth <= 960) {
       setButton(true);
@@ -77,7 +78,7 @@ const Navbar = () => {
                     <BiBell className="cursor-pointer" />
                     <div className="bg-red-500 w-2 h-2 rounded-full absolute ml-2"></div>
                     {/* Notification card start */}
-                    {showNotification && <NotificationCard />}
+                    {showNotification && <NotificationCard handleClick={closeNotification} />}
                     {/* Notification card end */}
                   </div>
                 </div>

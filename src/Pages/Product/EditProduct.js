@@ -20,11 +20,11 @@ const EditProduct = () => {
       <div className="container">
         <div className="w-full flex flex-col lg:flex-row justify-center gap-8 lg:gap-16 my-10">
           <div className="flex items-center lg:items-start mt-1">
-            <Link to="/">
+            <Link to="/productpreview">
             <IoArrowBack />
             </Link>
           </div>
-          <div className="flex w-1/2">
+          <div className="flex w-full lg:w-1/2">
               <form action="/" className="w-full flex flex-col gap-4 text-sm lg:text-base">
                 <div className="flex flex-col gap-2">
                   <label htmlFor="name">Nama Produk</label>

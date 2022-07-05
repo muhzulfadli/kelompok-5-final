@@ -1,14 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { BiCube, BiHeart, BiDollar, BiChevronRight } from "react-icons/bi";
 import ProductCard from "../../Components/Product/ProductCard";
+import {AiOutlineClose} from "react-icons/ai";
 
-const ProductList = () => {
+function  ProductList ()  {
+  const [alertOpen, setAlertOpen] = useState(true);
   return (
     <div className="Product">
       <div className="container max-w-screen-lg mx-auto">
-        <div className="flex items-center title text-xl font-bold py-6">
-          <h1 className="text-center lg:text-left w-full">Daftar Jual Saya</h1>
+        <div className="flex items-center title text-xl font-bold py-2">
+          <h1 className="text-center lg:text-left w-full absolute lg:hidden top-8 z-50">Daftar Jual Saya</h1>
         </div>
         {/* card nama penjual */}
         <div className="flex p-4 shadow-auto justify-between rounded-3xl">
@@ -78,6 +80,13 @@ const ProductList = () => {
                 <div className="flex justify-center text-3xl font-bold">+</div>
                 <div className="flex justify-center">Tambah Produk</div>
               </div>
+              {/* alert */}
+              <div className={`bg-[#73CA5C] rounded-xl fixed top-32 w-[500px] inset-x-1/2 -translate-x-1/2 px-6 py-2 justify-between flex text-white ${alertOpen ? "hidden":""}`}>
+            <h2 className="text-white my-auto">Harga tawarmu berhasil dikirim ke penjual</h2>
+            <div role="button" onClick={ () => setAlertOpen(true)} className="my-auto">
+            <AiOutlineClose/>
+            </div>
+          </div>
             </div>
             </Link>
            <ProductCard />

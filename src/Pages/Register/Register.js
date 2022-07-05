@@ -6,7 +6,7 @@ import userSlice from "../../store/user";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { TbArrowNarrowLeft } from "react-icons/tb";
-import { HiOutlineEye } from "react-icons/hi";
+import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 
 const Register = () => {
   const { register, handleSubmit, formState } = useForm();
@@ -50,6 +50,11 @@ const Register = () => {
       });
   };
 
+  const [passwordShow, setPasswordShow] = useState(false);
+  const togglePassword = () => {
+    setPasswordShow(!passwordShow);
+  };
+
   return (
     <div className="h-screen overflow-hidden font-main">
       <div className="flex flex-row h-full">
@@ -66,7 +71,9 @@ const Register = () => {
         <div className="w-full lg:w-1/3">
           <div className="container h-screen">
             <div className="flex flex-col gap-4 justify-between lg:justify-center h-full mx-8">
-              <Link to="/"><TbArrowNarrowLeft className="block my-4 lg:hidden" /></Link>
+              <Link to="/">
+                <TbArrowNarrowLeft className="block my-4 lg:hidden" />
+              </Link>
               <div className="flex flex-col gap-2 text-xs w-full justify-center">
                 <div className="flex flex-row items-center gap-2 bg-purple4 p-3 w-fit font-semibold text-white rounded-md text-xs">
                   <img
@@ -77,7 +84,11 @@ const Register = () => {
                   SecondHand
                 </div>
                 <h1 className="font-bold text-lg py-4">Daftar</h1>
-                { ( !regStatus.success && regStatus.message ) && <p className="text-sm text-white italic absolute bg-purple4 opacity-50">{regStatus.message}</p> }
+                {!regStatus.success && regStatus.message && (
+                  <p className="text-sm text-white italic absolute bg-purple4 opacity-50">
+                    {regStatus.message}
+                  </p>
+                )}
                 <form onSubmit={handleSubmit(formSubmitHandler)}>
                   <div className="flex flex-col gap-2 mb-2">
                     <label htmlFor="username">Nama Lengkap</label>
@@ -115,7 +126,7 @@ const Register = () => {
                     <label htmlFor="password">Password</label>
                     <div className="flex flex-row px-4 py-2 border border-solid border-gray-300 rounded-2xl">
                       <input
-                        type="password"
+                        type={passwordShow ? "text" : "password"}
                         name="password"
                         id="password"
                         placeholder="Masukkan Password"
@@ -123,7 +134,13 @@ const Register = () => {
                         {...register("user_password", { required: true })}
                         autoComplete="true"
                       />
-                      <HiOutlineEye className="w-6 h-6 text-gray-400 cursor-pointer" />
+                      <div onClick={togglePassword}>
+                        {passwordShow ? (
+                          <HiOutlineEyeOff className="w-6 h-6 text-gray-400 cursor-pointer" />
+                        ) : (
+                          <HiOutlineEye className="w-6 h-6 text-gray-400 cursor-pointer" />
+                        )}
+                      </div>
                     </div>
                   </div>
                   <div>
