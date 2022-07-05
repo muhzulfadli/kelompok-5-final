@@ -1,0 +1,20 @@
+<form action="javascript:void(0)">
+    <input type="text" id="first-name"></input>
+    <input type="text" id="last-name"></input>
+    <input type="text" id="city"></input>
+    <input type="number" id="zip-code"></input>
+    <div id="warning"></div>
+    <button onclick="submit">Klik donk!</button>
+</form>
+
+<script>
+function submit() {
+    let data = getFormData()
+    if (validateFormData(data) == false ) {
+        document.getElementById("warning").innerHTML = 
+            "Periksa form anda sekali lagi"
+    } else {
+        document.getElementById("warning").innerHTML = "";
+    }
+}
+</script>

@@ -2,7 +2,7 @@ import React from "react";
 
 const Notification = () => {
   return (
-    <div className="flex lg:hidden w-full">
+    <div className="flex w-full">
       <div className="container">
         <div className="font-bold text-2xl py-4 absolute top-3 ml-48 ">
           Notifikasi

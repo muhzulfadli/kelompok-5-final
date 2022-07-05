@@ -2,7 +2,7 @@ import React,{Component, useState} from "react";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import {AiOutlineClose} from "react-icons/ai";
+import {AiOutlineClose,AiFillStar} from "react-icons/ai";
 
 export class Fade extends Component {
     constructor(props) {
@@ -57,6 +57,7 @@ export class Fade extends Component {
   }
 
 function ProductPagebuyer() {
+
   const [isOpen, setIsOpen] = useState(false);
   const [alertOpen, setAlertOpen] = useState(true);
   const [buttonClick, setButtonClick] = useState(true);
@@ -78,7 +79,10 @@ function ProductPagebuyer() {
       </div>
       <div className="col-span-2">
         <div className="shadow-auto rounded-lg p-5">
-          <h2 className="text-base font-medium">Jam Tangan casio</h2>
+          <div className="flex items-center justify-between">
+            <h2 className="text-base font-medium">Jam Tangan casio</h2>
+            <AiFillStar id="star" className="text-neutral2 h-7 w-7 hover:fill-[#FFA500] cursor-pointer"/>
+          </div>
           <p className="text-sm font-normal text-[#8A8A8A]">aksesoris</p>
           <p className="font-normal text-base">Rp 250.000</p>
           {/* modals */}
@@ -88,7 +92,7 @@ function ProductPagebuyer() {
                 <button className="bg-[#D0D0D0] w-full py-3 mt-2 rounded-2xl font-medium text-sm text-white" id="tertarik-btn">Menunggu respon penjual</button> 
               )}
               {/* alert */}
-              <div className={`bg-[#73CA5C] rounded-xl fixed top-2 w-[500px] inset-x-1/2 -translate-x-1/2 px-6 py-2 justify-between flex text-white ${alertOpen ? "hidden":""}`}>
+              <div className={`bg-[#73CA5C] rounded-xl fixed top-32 w-[500px] inset-x-1/2 -translate-x-1/2 px-6 py-2 justify-between flex text-white ${alertOpen ? "hidden":""}`}>
             <h2 className="text-white my-auto">Harga tawarmu berhasil dikirim ke penjual</h2>
             <div role="button" onClick={ () => setAlertOpen(true)} className="my-auto">
             <AiOutlineClose/>
@@ -109,7 +113,7 @@ function ProductPagebuyer() {
               </div>
               <div className="col-span-2 pt-1 p-6">
               <div className="flex shadow-auto rounded-2xl p-3 bg-[#b8b7b776]"> 
-              <img className="w-14 rounded-xl" src="/images/picprofile.png"/>
+              <img className="w-14 rounded-xl" src="/images/picprofile.png" alt=""/>
               <div className="ml-4">
               <h1 className="font-medium text-sm">Jam Tangan Casio</h1>
               <h1 className="text-sm font-normal ">Rp 250.000</h1>
@@ -136,7 +140,7 @@ function ProductPagebuyer() {
           {/* modals end */}
         <div className="col-span-2 mt-5">
           <div className="flex shadow-auto rounded-2xl p-4"> 
-          <img className="w-12" src="/images/picprofile.png"/>
+          <img className="w-12" src="/images/picprofile.png" alt=""/>
           <div className="ml-4">
           <h1 className="font-medium text-sm">Nama Penjual</h1>
           <h1 className="text-sm font-normal text-[#8A8A8A]">kota</h1>

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import './style.css'
 
-export default class AutoPlay extends Component {
+export default class PauseOnHover extends Component {
   render() {
     const settings = {
       infinite: true,
@@ -9,19 +10,22 @@ export default class AutoPlay extends Component {
       centerPadding: "180px",
       slidesToShow: 1,
       slidesToScroll: 1,
-      speed: 5000,
+      autoplay: true,
+      autoplaySpeed: 4000 ,
+      pauseOnHover: true,
+      speed: 4000,
       cssEase: "linear",
+      initialState: 0,
       responsive: [
         {
-          breakpoint: 480,
+          breakpoint: 600,
           settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: '40px',
-            slidesToShow: 1
-          }
-        }
-      ]
+            slidesToShow: 0.32,
+            slidesToScroll: 1,
+          },
+        },
+      ],
+        
     };
     return (
       <div>
