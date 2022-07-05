@@ -1,13 +1,14 @@
+import React from "react";
+import { Link } from "react-router-dom";
 import { BiCube, BiHeart, BiDollar, BiChevronRight } from "react-icons/bi";
-import { FiMenu } from "react-icons/fi";
 import ProductCard from "../../Components/Product/ProductCard";
+
 const ProductList = () => {
   return (
     <div className="Product">
       <div className="container max-w-screen-lg mx-auto">
         <div className="flex items-center title text-xl font-bold py-6">
-          <FiMenu className="text-xl font-bold lg:hidden mr-4" />
-          <h1>Daftar Jual Saya</h1>
+          <h1 className="text-center lg:text-left w-full">Daftar Jual Saya</h1>
         </div>
         {/* card nama penjual */}
         <div className="flex p-4 shadow-auto justify-between rounded-3xl">
@@ -19,7 +20,7 @@ const ProductList = () => {
             </div>
           </div>
           <button className="border border-purple4 rounded-xl px-5 lg:px-6 lg:py-2 text-sm lg:text-base hover:bg-purple4 hover:text-white hover:font-semibold">
-            Edit
+            <Link to="/InfoProfile">Edit</Link>
           </button>
         </div>
         {/* card nama penjual end */}
@@ -71,12 +72,14 @@ const ProductList = () => {
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="flex min-h-full lg:h-48 items-center justify-center rounded-2xl border-4 border-dashed border-slate-300 p-5 shadow-md">
+            <Link to="/addproduct">
+            <div className="flex min-h-full lg:h-48 items-center justify-center rounded-2xl border-4 border-dashed border-slate-300 p-8 shadow-md">
               <div className="w-full">
                 <div className="flex justify-center text-3xl font-bold">+</div>
                 <div className="flex justify-center">Tambah Produk</div>
               </div>
             </div>
+            </Link>
            <ProductCard />
            <ProductCard />
            <ProductCard />

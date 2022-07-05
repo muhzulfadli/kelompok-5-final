@@ -1,24 +1,27 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import "./slide.css";
 
-export default class AutoPlay extends Component {
+export default class PauseOnHover extends Component {
   render() {
     const settings = {
+      className: "center",
       infinite: true,
       centerMode: true,
-      centerPadding: "180px",
+      centerPadding: "200px",
       slidesToShow: 1,
       slidesToScroll: 1,
-      speed: 5000,
+      autoplay: true,
+      pauseOnHover: true,
+      autoPlaySpeed: 4000,
       cssEase: "linear",
+      initialState: 0,
       responsive: [
         {
-          breakpoint: 480,
+          breakpoint: 600,
           settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: '40px',
-            slidesToShow: 1
+            slidesToShow: 0.32,
+            slidesToScroll: 1
           }
         }
       ]
@@ -26,13 +29,13 @@ export default class AutoPlay extends Component {
     return (
       <div>
         <Slider {...settings}>
-          <div>
+          <div >
           <img src="/images/imgbanner.png" alt="banner" />
           </div>
-          <div>
+          <div >
           <img src="/images/imgbanner.png" alt="banner" />
           </div>
-          <div>
+          <div >
           <img src="/images/imgbanner.png" alt="banner" />
           </div>
         </Slider>

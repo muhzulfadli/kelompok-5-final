@@ -1,0 +1,9 @@
+@media only screen and (max-width: 600px) {
+  .slick-slide > div {
+    margin: 0 10px;
+    transform: translateX(-12px);
+  }
+  .slick-list {
+    margin: 0 -10px;
+  }
+}

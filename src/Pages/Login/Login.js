@@ -67,6 +67,7 @@ const Login = () => {
             <div className="flex flex-col gap-4 justify-center h-full mx-8">
               <Link to="/"><TbArrowNarrowLeft className="my-4 block lg:hidden" /></Link>
               <div className="flex flex-col grow lg:grow-0 gap-2 text-xs w-full justify-center">
+                <Link to="/">
                 <div className="flex flex-row items-center gap-2 bg-purple4 p-3 w-fit font-semibold text-white rounded-md text-xs">
                   <img
                     src="/images/handshaker.svg"
@@ -75,6 +76,7 @@ const Login = () => {
                   />
                   SecondHand
                 </div>
+                </Link>
                 <h1 className="font-bold text-lg py-4">Masuk</h1>
                 { ( !regStatus.success && regStatus.message ) && <p className="text-sm text-purple4 italic">{regStatus.message}</p> }
                 <form onSubmit={handleSubmit(formSubmitHandler)}>
