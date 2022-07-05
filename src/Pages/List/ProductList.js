@@ -1,7 +1,11 @@
 import { BiCube, BiHeart, BiDollar, BiChevronRight } from "react-icons/bi";
 import { FiMenu } from "react-icons/fi";
 import ProductCard from "../../Components/Product/ProductCard";
-const ProductList = () => {
+import {AiOutlineClose} from "react-icons/ai";
+import React ,{useState} from "react"; 
+
+function  ProductList ()  {
+  const [alertOpen, setAlertOpen] = useState(true);
   return (
     <div className="Product">
       <div className="container max-w-screen-lg mx-auto">
@@ -76,6 +80,13 @@ const ProductList = () => {
                 <div className="flex justify-center text-3xl font-bold">+</div>
                 <div className="flex justify-center">Tambah Produk</div>
               </div>
+              {/* alert */}
+              <div className={`bg-[#73CA5C] rounded-xl fixed top-32 w-[500px] inset-x-1/2 -translate-x-1/2 px-6 py-2 justify-between flex text-white ${alertOpen ? "hidden":""}`}>
+            <h2 className="text-white my-auto">Harga tawarmu berhasil dikirim ke penjual</h2>
+            <div role="button" onClick={ () => setAlertOpen(true)} className="my-auto">
+            <AiOutlineClose/>
+            </div>
+          </div>
             </div>
            <ProductCard />
            <ProductCard />
