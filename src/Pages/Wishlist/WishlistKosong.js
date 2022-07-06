@@ -17,7 +17,7 @@ const WishlistKosong = () => {
         </div>
 
         {/* card nama penjual */}
-        <div className="flex p-4 shadow-auto justify-between rounded-3xl">
+        <div className="flex p-4 shadow-auto justify-between items-center rounded-3xl">
           <div className="flex">
             <img src="/images/picprofile.png" alt="" className="w-12 h-12" />
             <div className="text-profil ml-5">
@@ -47,7 +47,7 @@ const WishlistKosong = () => {
               <p className="text-sm">Diminati</p>
             </button>
           </Link>
-          <Link to="/">
+          <Link to="/history">
             <button className="flex items-center gap-2 bg-purple1 px-4 py-4 rounded-xl">
               <BiDollar className="font-bold text-xl" />
               <p className="text-sm">Terjual</p>
@@ -80,12 +80,13 @@ const WishlistKosong = () => {
                     <BiChevronRight className="text-gray-400" />
                   </button>
                 </Link>
+                <Link to="/history">
                 <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-gray-300">
                   <BiDollar />
                   <div className="w-8/12 text-left text-black">Terjual</div>
                   <BiChevronRight className="text-gray-400" />
                 </button>
-
+                </Link>
                 <button className="flex items-center space-x-2 text-purple4 py-3 w-full disabled">
                   <AiOutlineStar />
                   <div className="w-8/12 text-left">Wishlist</div>

@@ -21,6 +21,7 @@ module.exports = {
         neutral3: '#8A8A8A',
         neutral4: '#3C3C3C',
         neutral5: '#151515',
+        neutral6: '#000000',
         successAlert: '#73CA5C',
       },
       boxShadow: {
