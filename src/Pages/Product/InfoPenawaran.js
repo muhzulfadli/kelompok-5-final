@@ -78,7 +78,7 @@ const InfoPenawaran = () => {
                 setIsOpen(false);
                 setButtonClick(false);
               }}
-              className="flex justify-center items-center gap-6 bg-[#7126B5] w-full py-3 mt-5 rounded-2xl font-medium text-xs lg:text-sm text-white"
+              className="flex justify-center items-center gap-6 bg-purple4 w-full py-3 mt-5 rounded-2xl font-medium text-xs lg:text-sm text-white"
               id="tertarik-btn"
             >
               <p>Hubungi via Whatsapp</p>
@@ -122,9 +122,8 @@ const InfoPenawaran = () => {
                     value="success"
                     checked={isChecked === "success"}
                     onChange={handleChecked}
-                    className={`appearance-none border-2 border-solid border-neutral3 bg-neutral3 focus:ring-transparent checked:bg-purple4 rounded-full h-[18px] w-[18px]`}
+                    className="appearance-none border-2 border-solid border-neutral3 bg-neutral3 focus:ring-transparent checked:bg-purple4 rounded-full h-[18px] w-[18px]"
                   />
-                  {/* <HiCheckCircle className={`absolute top-1 z-40 left-0 text-lg text-purple4`} /> */}
                 </label>
                 {/* Checkbox end */}
                 <label forHTML="radio1" className="flex flex-col gap-1">
@@ -145,9 +144,8 @@ const InfoPenawaran = () => {
                   value="failed"
                   checked={isChecked === "failed"}
                   onChange={handleChecked}
-                  className={`border-2 border-solid border-neutral3 bg-neutral3 focus:ring-transparent checked:bg-purple4 rounded-full h-[18px] w-[18px]`}
+                  className="appearance-none border-2 border-solid border-neutral3 bg-neutral3 focus:ring-transparent checked:bg-purple4 rounded-full h-[18px] w-[18px]"
                 />
-                {/* <HiCheckCircle className={`${isChecked ? "absolute" : "hidden"} top-0 left-0 text-lg text-purple4`} /> */}
               </label>
               {/* Checkbox end */}
               <div className="flex flex-col gap-1">
