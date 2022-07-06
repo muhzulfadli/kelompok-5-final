@@ -6,10 +6,9 @@ import userSlice from "../../store/user";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { TbArrowNarrowLeft } from "react-icons/tb";
-import { HiOutlineEye } from "react-icons/hi";
+import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 
 const Login = () => {
-
   const { register, handleSubmit, formState } = useForm();
   const [regStatus, setRegStatus] = useState({
     success: false,
@@ -49,6 +48,11 @@ const Login = () => {
       });
   };
 
+  const [passwordShow, setPasswordShow] = useState(false);
+  const togglePassword = () => {
+    setPasswordShow(!passwordShow);
+  };
+
   return (
     <div className="h-screen overflow-hidden font-main">
       <div className="flex flex-row h-full">
@@ -65,18 +69,26 @@ const Login = () => {
         <div className="w-full lg:w-1/3">
           <div className="container h-screen">
             <div className="flex flex-col gap-4 justify-center h-full mx-8">
-              <Link to="/"><TbArrowNarrowLeft className="my-4 block lg:hidden" /></Link>
+              <Link to="/">
+                <TbArrowNarrowLeft className="my-4 block lg:hidden" />
+              </Link>
               <div className="flex flex-col grow lg:grow-0 gap-2 text-xs w-full justify-center">
-                <div className="flex flex-row items-center gap-2 bg-purple4 p-3 w-fit font-semibold text-white rounded-md text-xs">
-                  <img
-                    src="/images/handshaker.svg"
-                    alt=""
-                    className="w-5 h-5"
-                  />
-                  SecondHand
-                </div>
+                <Link to="/">
+                  <div className="flex flex-row items-center gap-2 bg-purple4 p-3 w-fit font-semibold text-white rounded-md text-xs">
+                    <img
+                      src="/images/handshaker.svg"
+                      alt=""
+                      className="w-5 h-5"
+                    />
+                    SecondHand
+                  </div>
+                </Link>
                 <h1 className="font-bold text-lg py-4">Masuk</h1>
-                { ( !regStatus.success && regStatus.message ) && <p className="text-sm text-purple4 italic">{regStatus.message}</p> }
+                {!regStatus.success && regStatus.message && (
+                  <p className="text-sm text-purple4 italic">
+                    {regStatus.message}
+                  </p>
+                )}
                 <form onSubmit={handleSubmit(formSubmitHandler)}>
                   <div className="flex flex-col gap-2 mb-2">
                     <label htmlFor="email">Email</label>
@@ -98,7 +110,7 @@ const Login = () => {
                     <label htmlFor="password">Password</label>
                     <div className="flex flex-row px-4 py-2 border border-solid border-gray-300 rounded-2xl outline-purple4">
                       <input
-                        type="password"
+                        type={passwordShow ? "text" : "password"}
                         name="password"
                         id="password"
                         placeholder="Masukkan Password"
@@ -106,7 +118,13 @@ const Login = () => {
                         {...register("user_password", { required: true })}
                         autoComplete="true"
                       />
-                      <HiOutlineEye className="w-6 h-6 text-gray-400 cursor-pointer" />
+                      <div onClick={togglePassword}>
+                        {passwordShow ? (
+                          <HiOutlineEyeOff className="w-6 h-6 text-gray-400 cursor-pointer" />
+                        ) : (
+                          <HiOutlineEye className="w-6 h-6 text-gray-400 cursor-pointer" />
+                        )}
+                      </div>
                     </div>
                   </div>
                   <p className="text-xs text-purple-900">
@@ -114,7 +132,10 @@ const Login = () => {
                       "Mohon isi password Anda"}
                   </p>
                   <div>
-                    <button type='submit' className="px-4 py-3 text-white disabled:bg-purple3 bg-purple4 rounded-2xl w-full my-4">
+                    <button
+                      type="submit"
+                      className="px-4 py-3 text-white disabled:bg-purple3 bg-purple4 rounded-2xl w-full my-4"
+                    >
                       Masuk
                     </button>
                   </div>
