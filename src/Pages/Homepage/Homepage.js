@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../../Components//Product/ProductCard";
 import { FaPlus } from "react-icons/fa";
 import Slider from "../../Components/Slider/Slider";
 import { BiSearch } from "react-icons/bi";
+import axios from "axios";
 
 const Homepage = () => {
+
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    axios.get('http://fakestoreapi.com/products/')
+    .then(res => {
+      console.log(res)
+      if (
+        res.data !== null
+      ) {
+        setProducts([...res.data])
+      } else {
+        return Promise.reject({
+          message: 'error'
+        })
+      }
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }, [])
+
   return (
     <section className="my-5 max-w-100% overflow-hidden">
       <div className="">
@@ -56,28 +79,15 @@ const Homepage = () => {
               Kesehatan
             </button>
           </div>
-          <Link to="/productdetail">
-            <div className="grid gap-4 grid-cols-2 sm:grid-cols-6 md:grid-cols-4 lg:grid-cols-6">
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-            </div>
-          </Link>
+          <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6  '>
+            {products.map( (product, index) => {
+              return (
+                <div>
+                  <ProductCard key={index} product={product} />
+                </div>
+              )
+            })}
+          </div>
         </div>
         <div className="flex items-center justify-center -ml-24">
           <Link to="/addproduct">
