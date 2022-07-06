@@ -34,7 +34,7 @@ const EditProduct = () => {
                     id="name"
                     value="Data Sebelumnya"
                     placeholder="Nama Produk"
-                    className="px-4 py-3 border border-solid border-gray-300 rounded-2xl focus:outline-purple4"
+                    className="px-4 py-3 border border-solid border-neutral2 rounded-2xl focus:outline-purple4"
                   />
                 </div>
                   <div className="flex flex-col gap-2">
@@ -45,7 +45,7 @@ const EditProduct = () => {
                       id="price"
                       value="Data Sebelumnya"
                       placeholder="Rp 0,00"
-                      className="px-4 py-3 border border-solid border-gray-300 rounded-2xl focus:outline-purple4"
+                      className="px-4 py-3 border border-solid border-neutral2 rounded-2xl focus:outline-purple4"
                     />
                   </div>
                   <div className="flex flex-col gap-2">
@@ -56,7 +56,7 @@ const EditProduct = () => {
                       id="category"
                       value="Data Sebelumnya"
                       placeholder="Pilih Kategori"
-                      className="px-4 py-3 border border-solid border-gray-300 rounded-2xl focus:outline-purple4"
+                      className="px-4 py-3 border border-solid border-neutral2 rounded-2xl focus:outline-purple4"
                     />
                   </div>
                   <div className="flex flex-col gap-2">
@@ -66,7 +66,7 @@ const EditProduct = () => {
                       id="description"
                       value="Data Sebelumnya"
                       placeholder="Contoh: Jalan Ikan Hiu 33"
-                      className="px-4 py-3 border border-solid border-gray-300 rounded-2xl focus:outline-purple4"
+                      className="px-4 py-3 border border-solid border-neutral2 rounded-2xl focus:outline-purple4"
                     />
                   </div>
                   <div className="flex flex-col gap-2">

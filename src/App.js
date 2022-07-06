@@ -13,6 +13,7 @@ import AddProduct from "./Pages/Product/AddProduct";
 import EditProduct from "./Pages/Product/EditProduct";
 import InfoProfile from "./Pages/Profile/InfoProfile";
 import InfoPenawaran from "./Pages/Product/InfoPenawaran";
+import Diminati from "./Pages/Product/Diminati";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
             <Route path="notification" element={<Notification />} />
             <Route path="infoprofile" element={<InfoProfile />} />
             <Route path="infopenawaran" element={<InfoPenawaran />} />
+            <Route path="diminati" element={<Diminati />} />
           </Route>
         </Routes>
       </div>
