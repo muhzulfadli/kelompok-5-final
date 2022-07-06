@@ -18,7 +18,7 @@ const WishlistAdaproduct = () => {
         </div>
 
         {/* card nama penjual */}
-        <div className="flex p-4 shadow-auto justify-between rounded-3xl">
+        <div className="flex p-4 shadow-auto justify-between items-center rounded-3xl">
           <div className="flex">
             <img src="/images/picprofile.png" alt="" className="w-12 h-12" />
             <div className="text-profil ml-5">

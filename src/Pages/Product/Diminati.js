@@ -68,7 +68,7 @@ const Diminati = () => {
                 <Link to="/productlist">
                   <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-neutral2">
                     <BiCube />
-                    <div className="w-8/12 text-left text-black">
+                    <div className="w-8/12 text-left text-neutral6">
                       Semua Produk
                     </div>
                     <BiChevronRight />
@@ -84,7 +84,7 @@ const Diminati = () => {
                 <Link to="/history">
                   <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-gray-300">
                     <BiDollar />
-                    <div className="w-8/12 text-left text-black">Terjual</div>
+                    <div className="w-8/12 text-left text-neutral6">Terjual</div>
                     <BiChevronRight />
                   </button>
                 </Link>
@@ -92,7 +92,7 @@ const Diminati = () => {
                 <Link to="/wishlistkosong">
                   <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-gray-300">
                     <AiOutlineStar />
-                    <div className="w-8/12 text-left text-black">Wishlist</div>
+                    <div className="w-8/12 text-left text-neutral6">Wishlist</div>
                     <BiChevronRight />
                   </button>
                 </Link>
