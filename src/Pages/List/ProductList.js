@@ -10,6 +10,7 @@ function ProductList() {
     <div>
       <div className="container max-w-screen-lg mx-auto">
         <div className="flex items-center title text-xl font-bold py-4">
+          <h1 className="hidden lg:block my-2 lg:w-full lg:text-left">Daftar Jual Saya</h1>
           <h1 className="text-right w-1/2 absolute lg:hidden top-8 left-16 z-50 ml-6">
             Daftar Jual Saya
           </h1>
@@ -49,7 +50,7 @@ function ProductList() {
               <p className="text-sm">Terjual</p>
             </button>
           </Link>
-          <Link to="/">
+          <Link to="/wishlistkosong">
             <button className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-white px-4 py-4 rounded-xl">
               <AiOutlineStar className="font-bold text-xl" />
               <p className="text-sm">Wishlist</p>
@@ -64,14 +65,14 @@ function ProductList() {
             <div className="hidden lg:flex justify-center md:justify-start">
               <div className="shadow-auto rounded-lg p-6 h-fit lg:w-60 w-11/12">
                 <h2 className="text-xl pb-4">Kategori</h2>
-                <button className="flex items-center space-x-2 text-purple4 py-3 w-full">
+                <button className="flex items-center space-x-2 text-purple4 py-3 w-full border-b border-purple4">
                   <BiCube />
                   <div className="w-8/12 text-left">Semua Produk</div>
                   <BiChevronRight />
                 </button>
 
                 <Link to="/diminati">
-                  <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-t border-neutral2">
+                  <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-neutral2">
                     <BiHeart />
                     <div className="w-8/12 text-left text-black">Diminati</div>
                     <BiChevronRight />
@@ -79,15 +80,15 @@ function ProductList() {
                 </Link>
 
                 <Link to="/">
-                  <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-t border-neutral2">
+                  <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-neutral2">
                     <BiDollar />
                     <div className="w-8/12 text-left text-black">Terjual</div>
                     <BiChevronRight />
                   </button>
                 </Link>
 
-                <Link to="/">
-                  <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-t border-neutral2">
+                <Link to="/wishlistkosong">
+                  <button className="flex items-center space-x-2 text-neutral3 py-3 w-full">
                     <AiOutlineStar />
                     <div className="w-8/12 text-left text-black">Wishlist</div>
                     <BiChevronRight />

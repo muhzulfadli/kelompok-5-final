@@ -9,8 +9,9 @@ const Diminati = () => {
     <div>
       <div className="container max-w-screen-lg mx-auto">
         <div className="flex items-center title text-xl font-bold py-4">
+          <h1 className="hidden lg:block my-2 lg:w-full lg:text-left">Daftar Jual Saya</h1>
           <h1 className="text-right w-1/2 absolute lg:hidden top-8 left-16 z-50 ml-6">
-            Daftar Diminati
+            Daftar Jual Saya
           </h1>
         </div>
 
@@ -49,7 +50,7 @@ const Diminati = () => {
               <p className="text-sm">Terjual</p>
             </button>
           </Link>
-          <Link to="/">
+          <Link to="/wishlistkosong">
             <button className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-white px-4 py-4 rounded-xl">
               <AiOutlineStar className="font-bold text-xl" />
               <p className="text-sm">Wishlist</p>
@@ -81,15 +82,15 @@ const Diminati = () => {
                 </button>
 
                 <Link to="/">
-                  <button className="flex items-center space-x-2 py-3 w-full border-b border-gray-300">
+                  <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-gray-300">
                     <BiDollar />
                     <div className="w-8/12 text-left text-black">Terjual</div>
                     <BiChevronRight />
                   </button>
                 </Link>
 
-                <Link to="/">
-                  <button className="flex items-center space-x-2 py-3 w-full border-b border-gray-300">
+                <Link to="/wishlistkosong">
+                  <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-gray-300">
                     <AiOutlineStar />
                     <div className="w-8/12 text-left text-black">Wishlist</div>
                     <BiChevronRight />
