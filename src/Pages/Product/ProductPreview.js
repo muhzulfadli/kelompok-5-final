@@ -155,7 +155,6 @@ const ProductPreview = () => {
               </button>
             </Link>
           </div>
-
           <div className="col-span-2 mt-5">
             <div className="lg:flex hidden shadow-auto rounded-2xl p-4">
               <img className="w-12" src="/images/picprofile.png" alt="" />

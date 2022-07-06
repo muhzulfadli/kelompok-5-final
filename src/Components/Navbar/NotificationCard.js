@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NotificationCard = ({setShowNotification}) => {
+const NotificationCard = (closeClick) => {
   return (
     <div
-      onClick={() => {
-        setShowNotification(false);
-      }}
+      onClick={closeClick}
       className="absolute origin-top-right w-80 bg-white shadow-auto rounded-xl px-4 py-3 -ml-72 mt-8"
     >
       <Link to="/notification">
@@ -19,7 +17,7 @@ const NotificationCard = ({setShowNotification}) => {
             />
           </div>
           <div className="flex flex-col">
-            <div className="w-full text-tiny text-neutral3 flex space-x-10">
+            <div className="w-full text-tiny text-gray-500 flex space-x-10">
               <div>Penawaran Produk</div>
               <div className="flex items-center gap-2">
                 <p>20 Apr, 14:04</p>

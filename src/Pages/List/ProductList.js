@@ -44,7 +44,7 @@ function ProductList() {
               <p className="text-sm">Diminati</p>
             </button>
           </Link>
-          <Link to="/">
+          <Link to="/history">
             <button className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-white px-4 py-4 rounded-xl">
               <BiDollar className="font-bold text-xl" />
               <p className="text-sm">Terjual</p>
@@ -79,7 +79,7 @@ function ProductList() {
                   </button>
                 </Link>
 
-                <Link to="/">
+                <Link to="/history">
                   <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-neutral2">
                     <BiDollar />
                     <div className="w-8/12 text-left text-black">Terjual</div>

@@ -44,7 +44,7 @@ const Diminati = () => {
             <BiHeart className="font-bold text-xl" />
             <p className="text-sm">Diminati</p>
           </div>
-          <Link to="/">
+          <Link to="/history">
             <button className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-white px-4 py-4 rounded-xl">
               <BiDollar className="font-bold text-xl" />
               <p className="text-sm">Terjual</p>
@@ -81,7 +81,7 @@ const Diminati = () => {
                   <BiChevronRight />
                 </button>
 
-                <Link to="/">
+                <Link to="/history">
                   <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-gray-300">
                     <BiDollar />
                     <div className="w-8/12 text-left text-black">Terjual</div>
