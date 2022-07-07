@@ -20,6 +20,7 @@ module.exports = {
         neutral2: '#D0D0D0',
         neutral3: '#8A8A8A',
         neutral4: '#3C3C3C',
+        neutral5: '#151515',
       },
       boxShadow: {
         'auto': '0px 0px 4px rgba(0, 0, 0, 0.15)'
