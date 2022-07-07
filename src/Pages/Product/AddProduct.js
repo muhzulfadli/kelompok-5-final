@@ -1,11 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import tw from "tailwind-styled-components";
 import { IoArrowBack } from "react-icons/io5";
 import { BsPlusLg } from "react-icons/bs";
 
 const AddProduct = () => {
+
+  const navigate = useNavigate();
 
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone()
   // looping
@@ -20,9 +22,7 @@ const AddProduct = () => {
       <div className="container">
         <div className="w-full flex flex-col lg:flex-row justify-center gap-8 lg:gap-16 my-10">
           <div className="flex items-center lg:items-start mt-1">
-            <Link to="/">
-            <IoArrowBack />
-            </Link>
+            <IoArrowBack onClick={() => navigate(-1)} className="cursor-pointer" />
           </div>
           <div className="flex w-full lg:w-1/2">
               <form action="/" className="w-full flex flex-col gap-4 text-sm lg:text-base">
@@ -78,14 +78,14 @@ const AddProduct = () => {
                   <div className="w-full flex flex-row gap-2 mt-2 mb-4">
                     <div className="basis-1/2">
                       <Link to="/productpreview">
-                        <div className="bg-purple4 py-3 px-4 rounded-2xl font-medium text-sm text-white text-center">
+                        <div className="bg-purple4 py-3 px-4 rounded-2xl font-medium text-sm text-white text-center cursor-pointer">
                           Preview
                         </div>
                       </Link>
                     </div>
                     <div className="basis-1/2">
                       <Link to="/productlist">
-                        <div className="bg-purple4 py-3 px-4 rounded-2xl font-medium text-sm text-white text-center">
+                        <div className="bg-purple4 py-3 px-4 rounded-2xl font-medium text-sm text-white text-center cursor-pointer">
                           Terbitkan
                         </div>
                       </Link>

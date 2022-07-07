@@ -1,16 +1,15 @@
-import { BiCube, BiHeart, BiDollar, BiChevronRight } from "react-icons/bi";
+import React from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../../Components/Product/ProductCard";
+import { BiCube, BiHeart, BiDollar, BiChevronRight } from "react-icons/bi";
 import { AiOutlineStar } from "react-icons/ai";
 
-const History = () => {
+const Diminati = () => {
   return (
-    <div className="Product">
+    <div>
       <div className="container max-w-screen-lg mx-auto">
         <div className="flex items-center title text-xl font-bold py-4">
-          <h1 className="hidden lg:block my-2 lg:w-full lg:text-left">
-            Daftar Jual Saya
-          </h1>
+          <h1 className="hidden lg:block my-2 lg:w-full lg:text-left">Daftar Jual Saya</h1>
           <h1 className="text-right w-1/2 absolute lg:hidden top-8 left-16 z-50 ml-6">
             Daftar Jual Saya
           </h1>
@@ -25,7 +24,7 @@ const History = () => {
               <p className="text-tiny lg:text-sm text-gray-300">Kota</p>
             </div>
           </div>
-          <Link to="/infoprofile">
+          <Link to="/InfoProfile">
             <button className="border border-purple4 rounded-xl px-5 lg:px-6 py-2 text-sm lg:text-base hover:bg-purple4 hover:text-white hover:font-semibold">
               Edit
             </button>
@@ -33,7 +32,7 @@ const History = () => {
         </div>
         {/* card nama penjual end */}
 
-        {/* kategori card start */}
+        {/* mobile kategori card start */}
         <div className="lg:hidden flex gap-4 h-full my-8">
           <Link to="/productlist">
             <button className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-white px-4 py-4 rounded-xl">
@@ -41,16 +40,16 @@ const History = () => {
               <p className="text-sm">Produk</p>
             </button>
           </Link>
-          <Link to="/diminati">
-            <div className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-white px-4 py-4 rounded-xl">
-              <BiHeart className="font-bold text-xl" />
-              <p className="text-sm">Diminati</p>
-            </div>
-          </Link>
           <div className="flex items-center gap-2 bg-purple4 px-4 py-4 rounded-xl text-white">
-            <BiDollar className="font-bold text-xl" />
-            <p className="text-sm">Terjual</p>
+            <BiHeart className="font-bold text-xl" />
+            <p className="text-sm">Diminati</p>
           </div>
+          <Link to="/history">
+            <button className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-white px-4 py-4 rounded-xl">
+              <BiDollar className="font-bold text-xl" />
+              <p className="text-sm">Terjual</p>
+            </button>
+          </Link>
           <Link to="/wishlistkosong">
             <button className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-white px-4 py-4 rounded-xl">
               <AiOutlineStar className="font-bold text-xl" />
@@ -58,10 +57,10 @@ const History = () => {
             </button>
           </Link>
         </div>
-        {/* kategori card end */}
+        {/* mobile kategori card end */}
 
         {/* Kategori start */}
-        <div className="lg:flex mt-8 block">
+        <div className="lg:flex my-8 block">
           <div className="lg:w-1/3">
             <div className="hidden lg:flex justify-center md:justify-start">
               <div className="shadow-auto rounded-lg p-6 h-fit lg:w-60 w-11/12">
@@ -76,16 +75,16 @@ const History = () => {
                   </button>
                 </Link>
 
-                <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-gray-300">
+                <button className="flex items-center space-x-2 text-purple4 py-3 w-full border-b border-purple3">
                   <BiHeart />
-                  <div className="w-8/12 text-left text-neutral6">Diminati</div>
+                  <div className="w-8/12 text-left">Diminati</div>
                   <BiChevronRight />
                 </button>
 
                 <Link to="/history">
-                  <button className="flex items-center space-x-2 text-purple4 py-3 w-full border-b border-purple3">
+                  <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-gray-300">
                     <BiDollar />
-                    <div className="w-8/12 text-left">Terjual</div>
+                    <div className="w-8/12 text-left text-neutral6">Terjual</div>
                     <BiChevronRight />
                   </button>
                 </Link>
@@ -93,16 +92,31 @@ const History = () => {
                 <Link to="/wishlistkosong">
                   <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-gray-300">
                     <AiOutlineStar />
-                    <div className="w-8/12 text-left text-neutral6">
-                      Wishlist
-                    </div>
+                    <div className="w-8/12 text-left text-neutral6">Wishlist</div>
                     <BiChevronRight />
                   </button>
                 </Link>
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div className="w-5/6 lg:w-4/6 absolute top-80 text-center lg:left-80 ml-4 lg:top-60 py-8">
+            <div className="w-full flex flex-col items-center justify-center text-sm lg:text-base">
+              <img
+                src="/images/Empty.png"
+                alt=""
+                className="w-64 lg:w-60 h-64"
+              />
+              <div>Belum ada produkmu yang diminati nih,</div>
+              <div>sabar ya rejeki ga kemana-mana kok</div>
+            </div>
+          </div>
+
+          <div className="hidden grid-cols-2 lg:grid-cols-3 gap-6">
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
             <ProductCard />
             <ProductCard />
             <ProductCard />
@@ -115,4 +129,4 @@ const History = () => {
   );
 };
 
-export default History;
+export default Diminati;

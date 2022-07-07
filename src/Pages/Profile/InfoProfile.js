@@ -1,27 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import { FiChevronDown, FiCamera } from "react-icons/fi";
 import { IoArrowBack } from "react-icons/io5";
 import tw from "tailwind-styled-components";
 
 const InfoProfile = () => {
+  const navigate = useNavigate();
 
-  const { acceptedFiles, getRootProps, getInputProps } = useDropzone()
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
   // looping
   const files = acceptedFiles.map((file) => (
     <li key={file.path}>
       {file.path} - {file.size} bytes
     </li>
-  ))
+  ));
 
   return (
     <div className="w-full min-h-screen">
       <div className="container">
-        <div className="w-full flex flex-col lg:flex-row justify-center gap-8 lg:gap-16 my-10">
+        <div className="w-full flex flex-col lg:flex-row justify-center gap-8 lg:gap-16 my-4 lg:my-10">
           <div className="flex items-center lg:items-start">
-            <Link to="/"><IoArrowBack /></Link>
-            <div className="lg:hidden w-full font-semibold text-md text-center -translate-x-4">Lengkapi Info Akun</div>
+            <button>
+              <IoArrowBack
+                onClick={() => {
+                  navigate(-1);
+                }}
+              />
+            </button>
+            <div className="lg:hidden w-5/6 font-semibold text-md text-center justify-around ml-6">
+              Lengkapi Info Akun
+            </div>
           </div>
           <div className="w-full lg:w-1/2 flex flex-col gap-8">
             <div className="flex justify-center">
@@ -86,9 +95,11 @@ const InfoProfile = () => {
                 />
               </div>
             </form>
-            <div className="border border-solid border-purple4 px-3 py-3 rounded-2xl text-center text-purple4 hover:text-white cursor-pointer text-sm lg:text-base font-semibold hover:bg-purple4">
-              Submit
-            </div>
+            <Link to="/productlist">
+              <div className="border border-solid border-purple4 px-3 py-3 rounded-2xl text-center text-purple4 hover:text-white cursor-pointer text-sm lg:text-base font-semibold hover:bg-purple4">
+                Submit
+              </div>
+            </Link>
           </div>
         </div>
       </div>
@@ -101,6 +112,6 @@ const StyledDiv = tw.div`
   rounded-md 
   p-8 
   w-fit
-`
+`;
 
 export default InfoProfile;

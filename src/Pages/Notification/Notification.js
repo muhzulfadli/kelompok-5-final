@@ -6,7 +6,7 @@ const Notification = () => {
   return (
     <div className="flex w-full">
       <div className="container">
-        <div className="lg:hidden font-bold text-2xl py-4 absolute top-3 ml-48 z-50 ">
+        <div className="text-right w-1/2 absolute lg:hidden top-8 z-50 left-16 -ml-4 text-xl font-bold">
           Notifikasi
         </div>
         <div className="w-full flex flex-col lg:flex-row justify-center gap-8 lg:gap-16 my-8">

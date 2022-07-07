@@ -71,9 +71,9 @@ const Register = () => {
         <div className="w-full lg:w-1/3">
           <div className="container h-screen">
             <div className="flex flex-col gap-4 justify-between lg:justify-center h-full mx-8">
-              <Link to="/">
-                <TbArrowNarrowLeft className="block my-4 lg:hidden" />
-              </Link>
+              <button>
+                <TbArrowNarrowLeft onClick={() => navigate(-1)} className="block my-4 lg:hidden" />
+              </button>
               <div className="flex flex-col gap-2 text-xs w-full justify-center">
                 <div className="flex flex-row items-center gap-2 bg-purple4 p-3 w-fit font-semibold text-white rounded-md text-xs">
                   <img

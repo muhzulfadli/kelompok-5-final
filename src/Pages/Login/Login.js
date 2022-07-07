@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import userSlice from "../../store/user";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
@@ -53,6 +53,8 @@ const Login = () => {
     setPasswordShow(!passwordShow);
   };
 
+  const user = useSelector((store) => store.user.data);
+
   return (
     <div className="h-screen overflow-hidden font-main">
       <div className="flex flex-row h-full">
@@ -69,9 +71,9 @@ const Login = () => {
         <div className="w-full lg:w-1/3">
           <div className="container h-screen">
             <div className="flex flex-col gap-4 justify-center h-full mx-8">
-              <Link to="/">
-                <TbArrowNarrowLeft className="my-4 block lg:hidden" />
-              </Link>
+              <button>
+                <TbArrowNarrowLeft onClick={user !== null ? () => navigate(-1) : navigate("/")} className="my-4 block lg:hidden" />
+              </button>
               <div className="flex flex-col grow lg:grow-0 gap-2 text-xs w-full justify-center">
                 <Link to="/">
                   <div className="flex flex-row items-center gap-2 bg-purple4 p-3 w-fit font-semibold text-white rounded-md text-xs">
