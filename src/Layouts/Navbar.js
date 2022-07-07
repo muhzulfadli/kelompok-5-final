@@ -65,25 +65,26 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
-              { user === null && <div className="bg-purple4 px-3 py-2 text-white rounded-md flex gap-2 items-center">
+              { user === null ? (<div className="bg-purple4 px-3 py-2 text-white rounded-md flex gap-2 items-center">
                   <FiLogIn />
                   <Link to="/login" className="text-white">Masuk</Link>
-                </div> }
-              {user !== null && <div class="flex space-x-8 text-lg relative">
+                </div> ) : (
+              <div class="flex space-x-8 text-lg relative">
               <Link to="/productlist"><IoList className="cursor-pointer" /></Link>
                 <div className="relative inline-block text-left">
                   <div className="inline-flex justify-center w-full mb-1 bg-white text-lg font-medium focus:outline-none" onClick={handleNotification}>
                     <BiBell className="cursor-pointer" />
                     <div className="bg-red-500 w-2 h-2 rounded-full absolute ml-2"></div>
                     {/* Notification card start */}
-                    {showNotification && <NotificationCard setShowNotification={setShowNotification} />}
+                    {showNotification && <NotificationCard />}
                     {/* Notification card end */}
                   </div>
                 </div>
                 {/* Dropdown user start */}
                 <Dropdown />
                 {/* Dropdown user end */}
-              </div> }
+              </div> 
+              )}
             </div>
             {/* web view end */}
 
