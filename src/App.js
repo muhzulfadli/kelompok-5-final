@@ -15,6 +15,9 @@ import InfoProfile from "./Pages/Profile/InfoProfile";
 import InfoPenawaran from "./Pages/Product/InfoPenawaran";
 import WishlistAdaproduct from "./Pages/Wishlist/WishlistAdaproduct";
 import WishlistKosong from "./Pages/Wishlist/WishlistKosong";
+=======
+import History from "./Pages/Product/History";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -35,6 +38,7 @@ const App = () => {
             <Route path="infopenawaran" element={<InfoPenawaran />} />
             <Route path="wishlistadaproduct" element={<WishlistAdaproduct />} />
             <Route path="wishlistkosong" element={<WishlistKosong />} />
+            <Route path="history" element={<History />} />
           </Route>
         </Routes>
       </div>
