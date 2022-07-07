@@ -74,7 +74,7 @@ const WishlistKosong = () => {
                   </button>
                 </Link>
                 <Link to="/diminati">
-                  <button className="flex items-center space-x-2 text-neutral3 py-3 w-full ">
+                  <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-gray-300">
                     <BiHeart />
                     <div className="w-8/12 text-left text-black">Diminati</div>
                     <BiChevronRight className="text-gray-400" />
