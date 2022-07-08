@@ -62,6 +62,7 @@ export class Fade extends Component {
 }
 
 const ProductPagebuyer = () => {
+
   const [isOpen, setIsOpen] = useState(false);
   const [alertOpen, setAlertOpen] = useState(true);
   const [buttonClick, setButtonClick] = useState(true);

@@ -42,10 +42,10 @@ const History = () => {
             </button>
           </Link>
           <Link to="/diminati">
-            <div className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-white px-4 py-4 rounded-xl">
-              <BiHeart className="font-bold text-xl" />
+            <button className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-white px-4 py-4 rounded-xl">
+              <BiDollar className="font-bold text-xl" />
               <p className="text-sm">Diminati</p>
-            </div>
+            </button>
           </Link>
           <div className="flex items-center gap-2 bg-purple4 px-4 py-4 rounded-xl text-white">
             <BiDollar className="font-bold text-xl" />
@@ -76,11 +76,13 @@ const History = () => {
                   </button>
                 </Link>
 
-                <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-gray-300">
-                  <BiHeart />
-                  <div className="w-8/12 text-left text-neutral6">Diminati</div>
-                  <BiChevronRight />
-                </button>
+                <Link to="/diminati">
+                  <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-gray-300">
+                    <BiHeart />
+                    <div className="w-8/12 text-left text-neutral6">Diminati</div>
+                    <BiChevronRight />
+                  </button>
+                </Link>
 
                 <Link to="/history">
                   <button className="flex items-center space-x-2 text-purple4 py-3 w-full border-b border-purple3">
