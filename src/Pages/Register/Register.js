@@ -146,7 +146,7 @@ const Register = () => {
                   <div>
                     <button
                       type="submit"
-                      className="px-4 py-3 bg-purple4 rounded-2xl text-white w-full my-4"
+                      className="px-4 py-3 bg-purple4 hover:bg-purple5 rounded-2xl text-white w-full my-4 transition ease-in-out duration-300"
                     >
                       Daftar
                     </button>

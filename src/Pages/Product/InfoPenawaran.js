@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import { IoClose, IoLogoWhatsapp } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
@@ -17,6 +18,8 @@ const InfoPenawaran = () => {
     setIsChecked("");
   };
 
+  const navigate = useNavigate();
+
   return (
     <>
       {/* Modal terima start */}
@@ -25,7 +28,7 @@ const InfoPenawaran = () => {
           isOpen ? "flex" : "hidden"
         } bg-black bg-opacity-50 absolute top-0 left-0 inset-0 z-50 justify-center items-end lg:items-center`}
       >
-        <div className="bg-white lg:rounded-2xl lg:w-[27%] rounded-t-2xl w-screen">
+        <div className="bg-neutral1 lg:rounded-2xl lg:w-[27%] rounded-t-2xl w-screen">
           <div className="flex justify-end items-center pr-4 pt-4">
             <div>
               <IoClose
@@ -78,7 +81,7 @@ const InfoPenawaran = () => {
                 setIsOpen(false);
                 setButtonClick(false);
               }}
-              className="flex justify-center items-center gap-6 bg-purple4 w-full py-3 mt-5 rounded-2xl font-medium text-xs lg:text-sm text-white"
+              className="flex justify-center items-center gap-6 border border-purple4 bg-neutral1 hover:bg-purple4 w-full py-3 mt-5 rounded-2xl font-medium text-xs lg:text-sm text-purple5 hover:text-neutral1 hover:transition-all"
               id="tertarik-btn"
             >
               <p>Hubungi via Whatsapp</p>
@@ -95,7 +98,7 @@ const InfoPenawaran = () => {
           statusOpen ? "flex" : "hidden"
         } bg-black bg-opacity-50 absolute top-0 left-0 inset-0 z-50 justify-center items-end lg:items-center`}
       >
-        <div className="bg-white lg:rounded-2xl lg:w-[27%] rounded-t-2xl w-screen">
+        <div className="bg-neutral1 lg:rounded-2xl lg:w-[27%] rounded-t-2xl w-screen">
           <div className="flex justify-end items-center pr-4 pt-4">
             <div>
               <IoClose
@@ -163,7 +166,7 @@ const InfoPenawaran = () => {
               }}
               className={`${
                 isChecked ? "bg-purple4" : "bg-neutral3"
-              } w-full py-3 mt-5 rounded-2xl font-medium text-xs lg:text-sm text-white text-center`}
+              } w-full py-3 mt-5 rounded-2xl font-medium text-xs lg:text-sm text-neutral1 hover:transition-all text-center`}
               id="kirim-btn"
               disabled={isChecked ? false : true}
             >
@@ -177,11 +180,11 @@ const InfoPenawaran = () => {
       <div class="relative mt-6 flex justify-center md:mt-10">
         {/* Alert start */}
         <div
-          className={`bg-[#73CA5C] rounded-xl fixed top-32 w-[500px] inset-x-1/2 -translate-x-1/2 px-6 py-2 justify-between flex text-white ${
+          className={`bg-[#73CA5C] rounded-xl fixed top-32 w-[500px] inset-x-1/2 -translate-x-1/2 px-6 py-2 justify-between flex text-neutral1 hover:transition-all ${
             alertOpen ? "hidden" : ""
           }`}
         >
-          <h2 className="text-white my-auto text-sm">
+          <h2 className="text-neutral1 hover:transition-all my-auto text-sm">
             Status produk berhasil diperbarui
           </h2>
           <div
@@ -194,25 +197,27 @@ const InfoPenawaran = () => {
         </div>
         {/* Alert end */}
         <div class="hidden md:block md:w-3/5">
-          <FiArrowLeft class="text-2xl" />
+          <button onClick={() => {navigate(-1)}}>
+            <FiArrowLeft className="text-2xl" />
+          </button>
         </div>
-        <div class="absolute inset-0 inset-y-auto -z-10 mx-auto w-11/12 md:flex md:w-full md:justify-center">
-          <div class="md:w-2/5">
-            <div class="space-y-4">
-              <div class="w-full rounded-2xl p-5 shadow-md">
-                <div class="flex items-center space-x-5">
+        <div className="absolute inset-0 inset-y-auto -z-10 mx-auto w-11/12 md:flex md:w-full md:justify-center">
+          <div className="md:w-2/5">
+            <div className="space-y-4">
+              <div className="w-full rounded-2xl p-5 shadow-md">
+                <div className="flex items-center space-x-5">
                   <img
                     src="/images/picprofile.png"
                     alt=""
-                    class="h-12 w-12 rounded-xl object-cover"
+                    className="h-12 w-12 rounded-xl object-cover"
                   />
                   <div>
-                    <div class="font-medium">Nama Pembeli</div>
-                    <div class="text-gray-400">kota</div>
+                    <div className="font-medium">Nama Pembeli</div>
+                    <div className="text-gray-400">kota</div>
                   </div>
                 </div>
               </div>
-              <div class="font-medium">Daftar Produkmu yang Ditawar</div>
+              <div className="font-medium">Daftar Produkmu yang Ditawar</div>
               <div class="space-y-4">
                 <div class="flex space-x-4">
                   <img
@@ -236,12 +241,12 @@ const InfoPenawaran = () => {
                   <div class="flex justify-end">
                     {buttonClick ? (
                       <div class="flex w-full space-x-4 md:w-3/5">
-                        <div class="w-1/2 rounded-2xl border border-purple4 bg-white px-6 py-2 text-center cursor-pointer">
+                        <div class="w-1/2 rounded-2xl border border-purple4 bg-neutral1 hover:bg-purple4 px-6 py-2 text-purple5 hover:text-neutral1 hover:transition-all text-center cursor-pointer">
                           Tolak
                         </div>
                         <div
                           onClick={() => setIsOpen(true)}
-                          class="w-1/2 rounded-2xl border bg-purple4 px-6 py-2 text-center text-white cursor-pointer"
+                          class="w-1/2 rounded-2xl border border-purple4 bg-neutral1 hover:bg-purple4 px-6 py-2 text-center text-purple5 hover:text-neutral1 hover:transition-all cursor-pointer"
                         >
                           Terima
                         </div>
@@ -252,16 +257,16 @@ const InfoPenawaran = () => {
                           isChecked ? "hidden" : "flex"
                         } w-full space-x-4 md:w-3/5`}
                       >
-                        <div
+                        <button
                           onClick={() => setStatusOpen(true)}
-                          class="w-1/2 rounded-2xl border border-purple4 bg-white px-6 py-2 text-center cursor-pointer"
+                          class="w-1/2 rounded-2xl border border-purple4 bg-neutral1 hover:bg-purple4 px-6 py-2 text-center text-purple5 hover:text-neutral1"
                         >
                           Status
-                        </div>
-                        <div class="w-1/2 rounded-2xl border bg-purple4 px-auto py-2 flex items-center justify-center gap-2 text-white">
+                        </button>
+                        <button class="w-1/2 rounded-2xl border border-purple4 bg-neutral1 hover:bg-purple4 px-auto py-2 flex items-center justify-center gap-2 text-purple5 hover:text-neutral1">
                           <p>Hubungi di</p>
                           <IoLogoWhatsapp />
-                        </div>
+                        </button>
                       </div>
                     )}
                   </div>

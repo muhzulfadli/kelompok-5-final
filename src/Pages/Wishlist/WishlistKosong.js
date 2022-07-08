@@ -74,7 +74,7 @@ const WishlistKosong = () => {
                   </button>
                 </Link>
                 <Link to="/diminati">
-                  <button className="flex items-center space-x-2 text-neutral3 py-3 w-full ">
+                  <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-gray-300">
                     <BiHeart />
                     <div className="w-8/12 text-left text-black">Diminati</div>
                     <BiChevronRight className="text-gray-400" />
@@ -95,9 +95,17 @@ const WishlistKosong = () => {
               </div>
             </div>
           </div>
-          <div className="flex text-center justify-center w-full">
-            <p>Kamu Belum Punya Barang Impian</p>
-          </div>
+          
+          <div className="w-5/6 lg:w-4/6 absolute top-80 text-center lg:left-80 ml-4 lg:top-60 py-8">
+              <div className="w-full flex flex-col items-center justify-center text-sm lg:text-base">
+                <img
+                  src="/images/Empty-wishlist.png"
+                  alt=""
+                  className="w-64 lg:w-60 h-64"
+                />
+                <div>Kamu Belum Punya Barang Impian</div>
+              </div>
+            </div>
         </div>
       </div>
     </div>

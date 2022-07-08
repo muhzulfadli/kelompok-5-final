@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import ModalTawar from "../../Components/Buyer/ModalTawar";
+import { AiFillStar } from "react-icons/ai";
 
 export class Fade extends Component {
   constructor(props) {
@@ -62,10 +63,14 @@ export class Fade extends Component {
 }
 
 const ProductPagebuyer = () => {
-
   const [isOpen, setIsOpen] = useState(false);
   const [alertOpen, setAlertOpen] = useState(true);
   const [buttonClick, setButtonClick] = useState(true);
+  const [wishlistClicked, setWishlistClicked] = useState(false);
+
+  const handleWishlist = () => {
+    setWishlistClicked(current => !current);
+  }
 
   return (
     <>
@@ -87,9 +92,18 @@ const ProductPagebuyer = () => {
             {/* responsive */}
             <div className="container mx-auto max-w-4xl mt-3 -translate-y-12">
               <div className="shadow-auto rounded-lg p-4 bg-white text-base font-medium h-28 mx-4 px-3 md:hidden">
-                <h2 className="text-base font-medium">Jam Tangan casio</h2>
-                <p className="text-sm font-normal text-neutral3">aksesoris</p>
-                <p className="font-normal text-base">Rp 250.000</p>
+                <div className="flex justify-between">
+                  <div className="space-y-1">
+                    <h2 className="text-base font-medium">Jam Tangan casio</h2>
+                    <p className="text-sm font-normal text-neutral3">
+                      aksesoris
+                    </p>
+                    <p className="font-normal text-base">Rp 250.000</p>
+                  </div>
+                  <div onClick={handleWishlist} className={`text-2xl ${wishlistClicked? "text-purple4" : "text-neutral2"} hover:text-purple4 cursor-pointer`}>
+                    <AiFillStar />
+                  </div>
+                </div>
               </div>
             </div>
             {/* responsive penjual */}
@@ -114,6 +128,7 @@ const ProductPagebuyer = () => {
                 <button
                   onClick={() => setIsOpen(true)}
                   className="fixed left-46 w-[77%] bottom-6 z-20 shadow-lg text-neutral1 bg-neutral2 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mx-auto lg:mr-2"
+                  disabled
                 >
                   <span className="w-full">Saya tertarik dan ingin nego</span>
                 </button>
@@ -149,15 +164,22 @@ const ProductPagebuyer = () => {
           </div>
           <div className="col-span-2">
             <div className="shadow-auto rounded-lg p-5 md:block hidden">
-              <h2 className="text-base font-medium">Jam Tangan casio</h2>
-              <p className="text-sm font-normal text-neutral3">aksesoris</p>
-              <p className="font-normal text-base">Rp 250.000</p>
+              <div className="flex justify-between">
+                <div className="space-y-1">
+                  <h2 className="text-base font-medium">Jam Tangan casio</h2>
+                  <p className="text-sm font-normal text-neutral3">aksesoris</p>
+                  <p className="font-normal text-base">Rp 250.000</p>
+                </div>
+                  <div onClick={handleWishlist} className={`text-2xl ${wishlistClicked? "text-purple4" : "text-neutral2"} hover:text-purple4 cursor-pointer`}>
+                    <AiFillStar />
+                  </div>
+              </div>
 
               {/* modal button */}
               {buttonClick ? (
                 <button
                   onClick={() => setIsOpen(true)}
-                  className="bg-purple4 w-full py-3 mt-2 rounded-2xl font-medium text-sm text-white"
+                  className="bg-purple4 hover:bg-purple5 w-full py-3 mt-2 rounded-2xl font-medium text-sm text-white transition ease-in-out duration-300"
                   id="tertarik-btn"
                 >
                   Saya tertarik dan ingin nego

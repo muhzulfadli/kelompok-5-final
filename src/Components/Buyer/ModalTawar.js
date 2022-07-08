@@ -70,7 +70,7 @@ const ModalTawar = ({isOpen, setIsOpen, setAlertOpen, setButtonClick}) => {
               setIsOpen(false);
               setButtonClick(false);
             }}
-            className="bg-purple4 w-full py-3 mt-5 rounded-2xl font-medium text-sm text-white"
+            className="bg-purple4 hover:bg-purple5 w-full py-3 mt-5 rounded-2xl font-medium text-sm text-white transition ease-in-out duration-300"
             id="tertarik-btn"
           >
             Kirim
