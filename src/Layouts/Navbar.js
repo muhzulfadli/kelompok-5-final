@@ -14,7 +14,6 @@ const Navbar = () => {
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(true);
-  const handleNotification = () => setShowNotification(true);
    
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -72,11 +71,14 @@ const Navbar = () => {
               {user !== null && <div class="flex space-x-8 text-lg relative">
               <Link to="/productlist"><IoList className="cursor-pointer" /></Link>
                 <div className="relative inline-block text-left">
-                  <div className="inline-flex justify-center w-full mb-1 bg-white text-lg font-medium focus:outline-none" onClick={handleNotification}>
+                  <div
+                    onClick={() => setShowNotification(!showNotification)}
+                    className="inline-flex justify-center w-full mb-1 bg-white text-lg font-medium focus:outline-none"
+                  >
                     <BiBell className="cursor-pointer" />
                     <div className="bg-red-500 w-2 h-2 rounded-full absolute ml-2"></div>
                     {/* Notification card start */}
-                    {showNotification && <NotificationCard setShowNotification={setShowNotification} />}
+                    {showNotification && <NotificationCard />}
                     {/* Notification card end */}
                   </div>
                 </div>
