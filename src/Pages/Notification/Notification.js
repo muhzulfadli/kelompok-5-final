@@ -1,8 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 
 const Notification = () => {
+
+  const navigate = useNavigate();
+
   return (
     <div className="flex w-full">
       <div className="container">
@@ -11,7 +14,7 @@ const Notification = () => {
         </div>
         <div className="w-full flex flex-col lg:flex-row justify-center gap-8 lg:gap-16 my-8">
           <div className="hidden lg:flex items-start mt-4">
-            <Link to="/"><IoArrowBack /></Link>
+            <button onClick={() => {navigate(-1)}}><IoArrowBack /></button>
           </div>
           <div className="w-full lg:w-1/2 flex flex-col gap-2">
             <div className="w-full flex py-4 gap-4">

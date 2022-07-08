@@ -7,27 +7,25 @@ import { BiSearch } from "react-icons/bi";
 import axios from "axios";
 
 const Homepage = () => {
-
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://fakestoreapi.com/products/')
-    .then(res => {
-      console.log(res)
-      if (
-        res.data !== null
-      ) {
-        setProducts([...res.data])
-      } else {
-        return Promise.reject({
-          message: 'error'
-        })
-      }
-    })
-    .catch(error => {
-      console.log(error)
-    })
-  }, [])
+    axios
+      .get("http://fakestoreapi.com/products/")
+      .then((res) => {
+        console.log(res);
+        if (res.data !== null) {
+          setProducts([...res.data]);
+        } else {
+          return Promise.reject({
+            message: "error",
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <section className="my-5 max-w-100% overflow-hidden">
@@ -79,13 +77,13 @@ const Homepage = () => {
               Kesehatan
             </button>
           </div>
-          <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6  '>
-            {products.map( (product, index) => {
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6  ">
+            {products.map((product, index) => {
               return (
-                <div>
+                <Link to="/productdetail">
                   <ProductCard key={index} product={product} />
-                </div>
-              )
+                </Link>
+              );
             })}
           </div>
         </div>
@@ -93,7 +91,7 @@ const Homepage = () => {
           <Link to="/addproduct">
             <button
               type="button"
-              className="fixed bottom-6 shadow-lg shadow-purple4 text-neutral1 bg-purple4 focus:ring-4 focus:outline-none focus:ring-purple2 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-purple4 dark:hover:bg-purple4 dark:focus:ring-purple2"
+              className="fixed bottom-6 shadow-lg shadow-purple4 hover:shadow-purple5 text-neutral1 bg-purple4 hover:bg-purple5 focus:ring-4 focus:outline-none focus:ring-purple2 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center transition ease-in-out duration-300"
             >
               <FaPlus className="mr-2" />
               Jual

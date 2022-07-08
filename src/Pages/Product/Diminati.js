@@ -1,15 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import ProductCard from "../../Components/Product/ProductCard";
 import { BiCube, BiHeart, BiDollar, BiChevronRight } from "react-icons/bi";
 import { AiOutlineStar } from "react-icons/ai";
 
 const Diminati = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://fakestoreapi.com/products/")
+      .then((res) => {
+        console.log(res);
+        if (res.data !== null) {
+          setProducts([...res.data]);
+        } else {
+          return Promise.reject({
+            message: "error",
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <div>
       <div className="container max-w-screen-lg mx-auto">
         <div className="flex items-center title text-xl font-bold py-4">
-          <h1 className="hidden lg:block my-2 lg:w-full lg:text-left">Daftar Jual Saya</h1>
+          <h1 className="hidden lg:block my-2 lg:w-full lg:text-left">
+            Daftar Jual Saya
+          </h1>
           <h1 className="text-right w-1/2 absolute lg:hidden top-8 left-16 z-50 ml-6">
             Daftar Jual Saya
           </h1>
@@ -84,7 +107,9 @@ const Diminati = () => {
                 <Link to="/history">
                   <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-gray-300">
                     <BiDollar />
-                    <div className="w-8/12 text-left text-neutral6">Terjual</div>
+                    <div className="w-8/12 text-left text-neutral6">
+                      Terjual
+                    </div>
                     <BiChevronRight />
                   </button>
                 </Link>
@@ -92,35 +117,37 @@ const Diminati = () => {
                 <Link to="/wishlistkosong">
                   <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-gray-300">
                     <AiOutlineStar />
-                    <div className="w-8/12 text-left text-neutral6">Wishlist</div>
+                    <div className="w-8/12 text-left text-neutral6">
+                      Wishlist
+                    </div>
                     <BiChevronRight />
                   </button>
                 </Link>
               </div>
             </div>
           </div>
-
-          <div className="w-5/6 lg:w-4/6 absolute top-80 text-center lg:left-80 ml-4 lg:top-60 py-8">
-            <div className="w-full flex flex-col items-center justify-center text-sm lg:text-base">
-              <img
-                src="/images/Empty.png"
-                alt=""
-                className="w-64 lg:w-60 h-64"
-              />
-              <div>Belum ada produkmu yang diminati nih,</div>
-              <div>sabar ya rejeki ga kemana-mana kok</div>
+          <div className="hidden">
+            <div className="w-5/6 lg:w-4/6 absolute top-80 text-center lg:left-80 ml-4 lg:top-60 py-8">
+              <div className="w-full flex flex-col items-center justify-center text-sm lg:text-base">
+                <img
+                  src="/images/Empty-interested.png"
+                  alt=""
+                  className="w-64 lg:w-60 h-64"
+                />
+                <div>Belum ada produkmu yang diminati nih,</div>
+                <div>sabar ya rejeki ga kemana-mana kok</div>
+              </div>
             </div>
           </div>
-
-          <div className="hidden grid-cols-2 lg:grid-cols-3 gap-6">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+          
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+            {products.map((product, index) => {
+              return (
+                <Link to="/infopenawaran">
+                  <ProductCard key={index} product={product} />
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>

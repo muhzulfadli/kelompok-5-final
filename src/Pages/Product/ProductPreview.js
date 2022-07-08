@@ -103,7 +103,7 @@ const ProductPreview = () => {
           <Link to="/productlist">
             <div className="flex justify-center lg:hidden items-center w-full right">
               <div
-                className="fixed left-46 w-[77%] bottom-6 z-20 shadow-lg shadow-purple4 text-neutral1 bg-purple4 focus:ring-4 focus:outline-none focus:ring-purple2 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mx-auto lg:mr-2 dark:bg-purple4 dark:hover:bg-purple5 dark:focus:ring-purple4"
+                className="fixed left-46 w-[77%] bottom-6 z-20 shadow-lg shadow-purple4 hover:bg-purple5 text-neutral1 bg-purple4 focus:ring-4 focus:outline-none focus:ring-purple4 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mx-auto lg:mr-2 transition ease-in-out duration-300 dark:bg-purple4 dark:hover:bg-purple5 dark:focus:ring-purple4"
               >
                 <span className="w-full">
                 Terbitkan</span>
@@ -145,12 +145,12 @@ const ProductPreview = () => {
             <p className="text-sm font-normal text-neutral3">aksesoris</p>
             <p className="font-normal text-base">Rp 250.000</p>
             <Link to="/productlist">
-              <button className="bg-purple4 w-full py-3 mt-2 rounded-2xl font-medium text-sm text-white">
+              <button className="bg-neutral1 w-full py-3 mt-2 rounded-2xl font-medium text-sm border-2 border-purple4 hover:bg-purple4 text-purple5 hover:text-white transition ease-in-out duration-300">
                 Terbitkan
               </button>
             </Link>
             <Link to="/editproduct">
-              <button className="bg-neutral1 w-full py-3 mt-2 rounded-2xl font-medium text-sm border-2 border-purple4 hover:bg-purple4 hover:text-white transition ease-in-out duration-300">
+              <button className="bg-neutral1 w-full py-3 mt-2 rounded-2xl font-medium text-sm border-2 border-purple4 hover:bg-purple4 text-purple5 hover:text-white transition ease-in-out duration-300">
                 Edit
               </button>
             </Link>

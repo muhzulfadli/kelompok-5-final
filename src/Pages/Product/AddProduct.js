@@ -78,14 +78,14 @@ const AddProduct = () => {
                   <div className="w-full flex flex-row gap-2 mt-2 mb-4">
                     <div className="basis-1/2">
                       <Link to="/productpreview">
-                        <div className="bg-purple4 py-3 px-4 rounded-2xl font-medium text-sm text-white text-center cursor-pointer">
+                        <div className="bg-purple4 hover:bg-purple5 py-3 px-4 rounded-2xl font-medium text-sm text-white text-center cursor-pointer transition ease-in-out duration-300">
                           Preview
                         </div>
                       </Link>
                     </div>
                     <div className="basis-1/2">
                       <Link to="/productlist">
-                        <div className="bg-purple4 py-3 px-4 rounded-2xl font-medium text-sm text-white text-center cursor-pointer">
+                        <div className="bg-purple4 hover:bg-purple5 py-3 px-4 rounded-2xl font-medium text-sm text-white text-center cursor-pointer transition ease-in-out duration-300">
                           Terbitkan
                         </div>
                       </Link>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import tw from "tailwind-styled-components";
 import { IoArrowBack } from "react-icons/io5";
@@ -7,8 +7,9 @@ import { BsPlusLg } from "react-icons/bs";
 
 const EditProduct = () => {
 
+  const navigate = useNavigate();
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone()
-  // looping
+  
   const files = acceptedFiles.map((file) => (
     <li key={file.path}>
       {file.path} - {file.size} bytes
@@ -20,9 +21,9 @@ const EditProduct = () => {
       <div className="container">
         <div className="w-full flex flex-col lg:flex-row justify-center gap-8 lg:gap-16 my-10">
           <div className="flex items-center lg:items-start mt-1">
-            <Link to="/productpreview">
-            <IoArrowBack />
-            </Link>
+            <button onClick={() => {navigate(-1)}}>
+              <IoArrowBack />
+            </button>
           </div>
           <div className="flex w-full lg:w-1/2">
               <form action="/" className="w-full flex flex-col gap-4 text-sm lg:text-base">
@@ -82,14 +83,14 @@ const EditProduct = () => {
                   <div className="w-full flex flex-row gap-2 mt-2 mb-4">
                     <div className="basis-1/2">
                       <Link to="/productpreview">
-                        <div className="bg-purple4 py-3 px-4 rounded-2xl font-medium text-sm text-white text-center">
+                        <div className="py-3 px-4 rounded-2xl font-medium text-sm text-center text-neutral1 bg-purple4 hover:bg-purple5 transition ease-in-out duration-300">
                           Preview
                         </div>
                       </Link>
                     </div>
                     <div className="basis-1/2">
                       <Link to="/productlist">
-                        <div className="bg-purple4 py-3 px-4 rounded-2xl font-medium text-sm text-white text-center">
+                        <div className="py-3 px-4 rounded-2xl font-medium text-sm text-center text-neutral1 bg-purple4 hover:bg-purple5 transition ease-in-out duration-300">
                           Terbitkan
                         </div>
                       </Link>

@@ -96,7 +96,7 @@ const InfoProfile = () => {
               </div>
             </form>
             <Link to="/productlist">
-              <div className="border border-solid border-purple4 px-3 py-3 rounded-2xl text-center text-purple4 hover:text-white cursor-pointer text-sm lg:text-base font-semibold hover:bg-purple4">
+              <div className="px-3 py-3 rounded-2xl text-center text-white cursor-pointer text-sm lg:text-base font-semibold bg-purple4 hover:bg-purple5 transition ease-in-out duration-300">
                 Submit
               </div>
             </Link>

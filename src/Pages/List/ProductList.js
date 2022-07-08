@@ -1,16 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import { BiCube, BiHeart, BiDollar, BiChevronRight } from "react-icons/bi";
 import ProductCard from "../../Components/Product/ProductCard";
 import { AiOutlineClose, AiOutlineStar } from "react-icons/ai";
 
 function ProductList() {
   const [alertOpen, setAlertOpen] = useState(true);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://fakestoreapi.com/products/")
+      .then((res) => {
+        console.log(res);
+        if (res.data !== null) {
+          setProducts([...res.data]);
+        } else {
+          return Promise.reject({
+            message: "error",
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <div>
       <div className="container max-w-screen-lg mx-auto">
         <div className="flex items-center title text-xl font-bold py-4">
-          <h1 className="hidden lg:block my-2 lg:w-full lg:text-left">Daftar Jual Saya</h1>
+          <h1 className="hidden lg:block my-2 lg:w-full lg:text-left">
+            Daftar Jual Saya
+          </h1>
           <h1 className="text-right w-1/2 absolute lg:hidden top-8 left-16 z-50 ml-6">
             Daftar Jual Saya
           </h1>
@@ -25,7 +48,7 @@ function ProductList() {
             </div>
           </div>
           <Link to="/InfoProfile">
-            <button className="border border-purple4 rounded-xl px-5 lg:px-6 py-2 text-sm lg:text-base hover:bg-purple4 hover:text-white hover:font-semibold">
+            <button className="border border-purple4 rounded-xl px-5 lg:px-6 py-2 text-sm lg:text-base hover:bg-purple4 hover:text-neutral1 hover:font-semibold">
               Edit
             </button>
           </Link>
@@ -34,24 +57,24 @@ function ProductList() {
 
         {/* mobile kategori card start */}
         <div className="lg:hidden flex gap-4 h-full my-8">
-          <div className="flex items-center gap-2 bg-purple4 px-4 py-4 rounded-xl text-white">
+          <div className="flex items-center gap-2 bg-purple4 px-4 py-4 rounded-xl text-neutral1">
             <BiCube className="font-bold text-xl" />
             <p className="text-sm">Produk</p>
           </div>
           <Link to="/diminati">
-            <button className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-white px-4 py-4 rounded-xl">
+            <button className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-neutral1 px-4 py-4 rounded-xl">
               <BiHeart className="font-bold text-xl" />
               <p className="text-sm">Diminati</p>
             </button>
           </Link>
           <Link to="/history">
-            <button className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-white px-4 py-4 rounded-xl">
+            <button className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-neutral1 px-4 py-4 rounded-xl">
               <BiDollar className="font-bold text-xl" />
               <p className="text-sm">Terjual</p>
             </button>
           </Link>
           <Link to="/wishlistkosong">
-            <button className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-white px-4 py-4 rounded-xl">
+            <button className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-neutral1 px-4 py-4 rounded-xl">
               <AiOutlineStar className="font-bold text-xl" />
               <p className="text-sm">Wishlist</p>
             </button>
@@ -109,11 +132,11 @@ function ProductList() {
                 </div>
                 {/* alert */}
                 <div
-                  className={`bg-successAlert rounded-xl fixed top-32 w-[500px] inset-x-1/2 -translate-x-1/2 px-6 py-2 justify-between flex text-white ${
+                  className={`bg-successAlert rounded-xl fixed top-32 w-[500px] inset-x-1/2 -translate-x-1/2 px-6 py-2 justify-between flex text-neutral1 ${
                     alertOpen ? "hidden" : ""
                   }`}
                 >
-                  <h2 className="text-white my-auto">
+                  <h2 className="text-neutral1 my-auto">
                     Produk berhasil diterbitkan.
                   </h2>
                   <div
@@ -126,14 +149,13 @@ function ProductList() {
                 </div>
               </div>
             </Link>
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            {products.map((product, index) => {
+              return (
+                <Link to="/editproduct">
+                  <ProductCard key={index} product={product} />
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>

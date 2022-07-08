@@ -43,7 +43,7 @@ const History = () => {
           </Link>
           <Link to="/diminati">
             <button className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-white px-4 py-4 rounded-xl">
-              <BiDollar className="font-bold text-xl" />
+              <BiHeart className="font-bold text-xl" />
               <p className="text-sm">Diminati</p>
             </button>
           </Link>
@@ -83,7 +83,6 @@ const History = () => {
                     <BiChevronRight />
                   </button>
                 </Link>
-
                 <Link to="/history">
                   <button className="flex items-center space-x-2 text-purple4 py-3 w-full border-b border-purple3">
                     <BiDollar />
@@ -104,6 +103,7 @@ const History = () => {
               </div>
             </div>
           </div>
+
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
             <ProductCard />
             <ProductCard />
