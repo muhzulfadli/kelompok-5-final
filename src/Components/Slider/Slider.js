@@ -23,6 +23,14 @@ export default class PauseOnHover extends Component {
             slidesToShow: 0.32,
             slidesToScroll: 1
           }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 0.31,
+            slidesToScroll: 1,
+            centerPadding: "140px"
+          }
         }
       ]
     };

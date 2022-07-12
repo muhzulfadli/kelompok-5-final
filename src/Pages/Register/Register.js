@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import userSlice from "../../store/user";
 import axios from "axios";
-import jwtDecode from "jwt-decode";
 import { TbArrowNarrowLeft } from "react-icons/tb";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 
@@ -23,32 +22,25 @@ const Register = () => {
     const postData = {
       email: data.user_email,
       password: data.user_password,
-      username: data.user_name,
-      isAdmin: false,
+      nama: data.user_name,
     };
 
     axios
-      .post("http://localhost:4000/register", postData)
+      .post("https://binar-second-hand.herokuapp.com/api/v1/auth/register", postData)
       .then((res) => {
-        if (typeof res.data.accessToken !== "undefined") {
-          // menyimpan token di localstorage
-          localStorage.setItem("cobaAccessToken", res.data.accessToken);
-
-          // menyimpan user di redux store
-          const user = jwtDecode(res.data.accessToken);
-          axios.get(`http://localhost:4000/users/${user.sub}`).then((res) => {
-            dispatch(userSlice.actions.addUser({ userData: res.data }));
+        console.log(res);
+          if (res.data.statusCode === 201) {
+            dispatch(userSlice.actions.addUser({ userData: res.data.data }));
             navigate("/");
-          });
-        }
-      })
-      .catch((err) => {
-        setRegStatus({
-          success: false,
-          message: "Sorry, something is wrong. Please try again later",
-        });
+            }
+          })
+          .catch((err) => {
+            setRegStatus({
+              success: false,
+              message: "Maaf, Terjadi kesalahan. Silahkan dicoba kembali",
+            });
       });
-  };
+    };
 
   const [passwordShow, setPasswordShow] = useState(false);
   const togglePassword = () => {
