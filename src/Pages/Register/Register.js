@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import userSlice from "../../store/user";
 import axios from "axios";
-import jwtDecode from "jwt-decode";
 import { TbArrowNarrowLeft } from "react-icons/tb";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 
@@ -23,29 +22,26 @@ const Register = () => {
     const postData = {
       email: data.user_email,
       password: data.user_password,
-      username: data.user_name,
-      isAdmin: false,
+      nama: data.user_name,
     };
 
     axios
-      .post("http://localhost:4000/register", postData)
+      .post(
+        "https://binar-second-hand.herokuapp.com/api/v1/auth/register",
+        postData
+      )
       .then((res) => {
-        if (typeof res.data.accessToken !== "undefined") {
-          // menyimpan token di localstorage
-          localStorage.setItem("cobaAccessToken", res.data.accessToken);
-
-          // menyimpan user di redux store
-          const user = jwtDecode(res.data.accessToken);
-          axios.get(`http://localhost:4000/users/${user.sub}`).then((res) => {
-            dispatch(userSlice.actions.addUser({ userData: res.data }));
-            navigate("/");
-          });
+        console.log(res);
+        if (res.data.statusCode === 201) {
+          dispatch(userSlice.actions.addUser({ userData: res.data.data }));
+          navigate("/");
+          return res.data.data;
         }
       })
       .catch((err) => {
         setRegStatus({
           success: false,
-          message: "Sorry, something is wrong. Please try again later",
+          message: "Maaf, Terjadi kesalahan. Silahkan dicoba kembali",
         });
       });
   };
@@ -72,17 +68,22 @@ const Register = () => {
           <div className="container h-screen">
             <div className="flex flex-col gap-4 justify-between lg:justify-center h-full mx-8">
               <button>
-                <TbArrowNarrowLeft onClick={() => navigate(-1)} className="block my-4 lg:hidden" />
+                <TbArrowNarrowLeft
+                  onClick={() => navigate(-1)}
+                  className="block my-4 lg:hidden"
+                />
               </button>
               <div className="flex flex-col gap-2 text-xs w-full justify-center">
-                <div className="flex flex-row items-center gap-2 bg-purple4 p-3 w-fit font-semibold text-white rounded-md text-xs">
-                  <img
-                    src="/images/handshaker.svg"
-                    alt=""
-                    className="w-5 h-5"
-                  />
-                  SecondHand
-                </div>
+                <Link to="/">
+                  <div className="flex flex-row items-center gap-2 bg-purple4 p-3 w-fit font-semibold text-white rounded-md text-xs">
+                    <img
+                      src="/images/handshaker.svg"
+                      alt=""
+                      className="w-5 h-5"
+                    />
+                    SecondHand
+                  </div>
+                </Link>
                 <h1 className="font-bold text-lg py-4">Daftar</h1>
                 {!regStatus.success && regStatus.message && (
                   <p className="text-sm text-white italic absolute bg-purple4 opacity-50">

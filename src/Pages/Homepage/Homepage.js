@@ -7,15 +7,15 @@ import { BiSearch } from "react-icons/bi";
 import axios from "axios";
 
 const Homepage = () => {
-  const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://fakestoreapi.com/products/")
+      .get("https://binar-second-hand.herokuapp.com/api/v1/product")
       .then((res) => {
-        console.log(res);
-        if (res.data !== null) {
-          setProducts([...res.data]);
+        // console.log(res);
+        if (res.data.products !== null) {
+          setProduct([...res.data.products]);
         } else {
           return Promise.reject({
             message: "error",
@@ -77,12 +77,12 @@ const Homepage = () => {
               Kesehatan
             </button>
           </div>
-          <div className="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-6  ">
-            {products.map((product, index) => {
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6  ">
+            {product.map((data) => {
               return (
-                <Link to="/productdetail">
-                  <ProductCard key={index} product={product} />
-                </Link>
+                // <Link to="/productdetail">
+                  <ProductCard key={data.id} data={data} />
+                // </Link>
               );
             })}
           </div>

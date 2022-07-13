@@ -6,25 +6,27 @@ import { BiCube, BiHeart, BiDollar, BiChevronRight } from "react-icons/bi";
 import { AiOutlineStar } from "react-icons/ai";
 
 const Diminati = () => {
-  const [products, setProducts] = useState([]);
+  
+  const [product, setProduct] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://fakestoreapi.com/products/")
+      .get("https://binar-second-hand.herokuapp.com/api/v1/product/offer/1")
       .then((res) => {
         console.log(res);
-        if (res.data !== null) {
-          setProducts([...res.data]);
-        } else {
-          return Promise.reject({
-            message: "error",
-          });
-        }
+        // if (res.data.products !== null) {
+        //   setProduct([...res.data.products]);
+        // } else {
+        //   return Promise.reject({
+        //     message: "error",
+        //   });
+        // }
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
 
   return (
     <div>
@@ -141,11 +143,11 @@ const Diminati = () => {
           </div>
           
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((product, index) => {
+            {product.map((data) => {
               return (
-                <Link to="/infopenawaran">
-                  <ProductCard key={index} product={product} />
-                </Link>
+                // <Link to="/infopenawaran">
+                <ProductCard key={data.id} data={data} />
+                // </Link>
               );
             })}
           </div>
