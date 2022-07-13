@@ -11,23 +11,35 @@ import ProductList from './Pages/List/ProductList'
 import Homepage from "./Pages/Homepage/Homepage";
 import AddProduct from "./Pages/Product/AddProduct";
 import EditProduct from "./Pages/Product/EditProduct";
+import InfoProfile from "./Pages/Profile/InfoProfile";
+import InfoPenawaran from "./Pages/Product/InfoPenawaran";
+import Diminati from "./Pages/Product/Diminati";
+import WishlistAdaproduct from "./Pages/Wishlist/WishlistAdaproduct";
+import WishlistKosong from "./Pages/Wishlist/WishlistKosong";
+import History from "./Pages/Product/History";
 
 const App = () => {
   return (
     <BrowserRouter>
       <div className="font-main">
         <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="logout" element={<Logout />} />
-            <Route path="/" element={<Layouts />}>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="logout" element={<Logout />} />
+          <Route path="/" element={<Layouts />}>
             <Route index element={<Homepage />} />
-            <Route path="/productlist" element={<ProductList />} />
-            <Route path="/productdetail" element={<ProductPagebuyer />} />
-            <Route path="/productpreview" element={<ProductPreview />} />
-            <Route path="/addproduct" element={<AddProduct />} />
-            <Route path="/editproduct" element={<EditProduct />} />
+            <Route path="productlist" element={<ProductList />} />
+            <Route path="productdetail" element={<ProductPagebuyer />} />
+            <Route path="productpreview" element={<ProductPreview />} />
+            <Route path="addproduct" element={<AddProduct />} />
+            <Route path="editproduct" element={<EditProduct />} />
             <Route path="notification" element={<Notification />} />
+            <Route path="infoprofile" element={<InfoProfile />} />
+            <Route path="infopenawaran" element={<InfoPenawaran />} />
+            <Route path="diminati" element={<Diminati />} />
+            <Route path="wishlistadaproduct" element={<WishlistAdaproduct />} />
+            <Route path="wishlistkosong" element={<WishlistKosong />} />
+            <Route path="history" element={<History />} />
           </Route>
         </Routes>
       </div>

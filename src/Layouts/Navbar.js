@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 import { BiSearch, BiBell } from "react-icons/bi";
 import { IoList, IoMenu, IoCloseCircle } from "react-icons/io5";
+import { FiLogIn } from "react-icons/fi";
 import Dropdown from "../Components/Navbar/Dropdown";
 import NotificationCard from "../Components/Navbar/NotificationCard";
 
@@ -14,9 +14,7 @@ const Navbar = () => {
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(true);
-  const handleNotification = () => setShowNotification(true);
-  const closeNotification = () => setShowNotification(false);
-
+   
   const showButton = () => {
     if (window.innerWidth <= 960) {
       setButton(true);
@@ -41,7 +39,7 @@ const Navbar = () => {
             {/* web view start */}
             <div className="hidden lg:flex items-center justify-between">
               <div className="flex w-5/12 items-center justify-between gap-6">
-              <Link to='/'>
+                <Link to="/">
                   <div className="flex flex-row items-center px-4 py-2 rounded text-purple4 text-sm font-semibold">
                     <img
                       src="/images/handshaker-ungu.svg "
@@ -66,26 +64,36 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
+              { user === null ? (<div className="bg-purple4 hover:bg-purple5 px-3 py-2 text-white rounded-md flex gap-2 items-center transition ease-in-out duration-300">
+                  <FiLogIn />
+                  <Link to="/login" className="text-white">Masuk</Link>
+                </div> ) : (
               <div class="flex space-x-8 text-lg relative">
-                <IoList className="cursor-pointer" />
+              <Link to="/productlist"><IoList className="cursor-pointer" /></Link>
                 <div className="relative inline-block text-left">
-                  <div className="relative w-full mb-1 bg-white text-lg font-medium focus:outline-none" onClick={handleNotification}>
+                  <div
+                    onClick={() => setShowNotification(!showNotification)}
+                    className="inline-flex justify-center w-full mb-1 bg-white text-lg font-medium focus:outline-none"
+                  >
                     <BiBell className="cursor-pointer" />
-                    <div className="bg-red-500 w-1.5 h-1.5 rounded-full absolute top-0 ml-2"></div>
+                    <div className="bg-red-500 w-2 h-2 rounded-full absolute ml-2"></div>
                     {/* Notification card start */}
-                    {showNotification && <NotificationCard handleClick={closeNotification} />}
+                    {showNotification && <NotificationCard />}
                     {/* Notification card end */}
                   </div>
                 </div>
+                {/* Dropdown user start */}
                 <Dropdown />
-              </div>
+                {/* Dropdown user end */}
+              </div> 
+              )}
             </div>
             {/* web view end */}
 
             {/* mobile view start */}
             {click ? (
               <div class="flex justify-between items-center lg:hidden">
-                <div>
+                <Link to="/">
                   <div className="flex flex-col items-center w-full">
                     <img
                       src="/images/handshaker-ungu.svg "
@@ -96,7 +104,7 @@ const Navbar = () => {
                       SecondHand
                     </p>
                   </div>
-                </div>
+                </Link>
                 <div className="text-2xl cursor-pointer" onClick={handleClick}>
                   {click && <IoMenu />}
                 </div>
@@ -106,60 +114,61 @@ const Navbar = () => {
                 <div className="px-4 py-5 w-full flex flex-col gap-6">
                   <div className="flex flex-row justify-between items-center">
                     <div
-                      className="flex flex-col items-center mx-5"
+                      className="flex flex-col items-center mx-2"
                       onClick={button}
                     >
                       <img
-                        src="/images/handshaker-ungu.svg"
+                        src="/images/handshaker.svg"
                         className="w-8 h-8"
                         alt=""
                       />
-                      <p className="text-[7px] font-bold text-purple4">
+                      <p className="text-[7px] font-bold text-white">
                         SecondHand
                       </p>
                     </div>
                     <div onClick={handleClick}>
                       <IoCloseCircle
                         onClick={click}
-                        className="text-3xl cursor-pointer"
+                        className="text-3xl cursor-pointer mx-1"
                       />
                     </div>
                   </div>
                   {user === null && (
-                    <div className="text-center">
+                    <div className="w-full flex justify-center">
                       <Link
                         to="/login"
-                        className="px-8 py-2 bg-purple4 text-white rounded-md w-fit"
+                        className="flex gap-2 items-center px-4 py-2 bg-purple4 text-white rounded-md w-fit"
                         onClick={closeMobileMenu}
                       >
-                        Login
+                        <FiLogIn />
+                        <div>Masuk</div>
                       </Link>
                     </div>
                   )}
 
                   {user !== null && (
                     <div onClick={closeMobileMenu} className="text-center">
-                      Notifikasi
+                      <Link to="/notification">Notifikasi</Link>
                     </div>
                   )}
                   {user !== null && (
                     <div onClick={closeMobileMenu} className="text-center">
-                      Daftar Jual
+                      <Link to="/productlist">Daftar Jual</Link>
                     </div>
                   )}
                   {user !== null && (
                     <div onClick={closeMobileMenu} className="text-center">
-                      Akun Saya
+                      <Link to="/infoprofile">Akun Saya</Link>
                     </div>
                   )}
                   {user !== null && (
-                    <div className="text-center">
+                    <div className="text-center my-2">
                       <Link
                         to="/logout"
                         onClick={closeMobileMenu}
                         className="px-4 py-2 bg-purple4 text-white rounded-md w-fit"
                       >
-                        Logout
+                        Keluar
                       </Link>
                     </div>
                   )}
@@ -176,4 +185,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

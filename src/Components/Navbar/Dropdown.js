@@ -30,29 +30,25 @@ const Dropdown = () => {
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
-                <Link
-                  to="/"
-                  className={classNames(
-                    active ? "bg-gray-100 text-purple4" : "text-gray-700",
-                    "flex items-center gap-4 px-4 py-2 text-sm font-medium"
-                  )}
+                <div
+                  className="text-purple4 flex items-center gap-4 px-4 py-2 text-sm font-medium"
                 >
                   <img src="/images/picprofile.png" alt="profile" className="rounded-full" />
                   Username
-                </Link>
+                  </div>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  to="/"
+                  to="/infoprofile"
                   className={classNames(
                     active ? "bg-gray-100 text-purple4" : "text-gray-700",
                     "flex items-center gap-2 px-4 py-2 mt-2 text-sm"
                   )}
                 >
                   <RiSettings4Fill />
-                  Setting
+                  Akun Saya
                 </Link>
               )}
             </Menu.Item>
@@ -67,7 +63,7 @@ const Dropdown = () => {
                     )}
                   >
                     <BiLogOut />
-                    Logout
+                    Keluar
                   </button>
                 )}
               </Menu.Item>
