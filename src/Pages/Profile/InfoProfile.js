@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import { FiChevronDown, FiCamera } from "react-icons/fi";
 import { IoArrowBack } from "react-icons/io5";
@@ -95,11 +95,9 @@ const InfoProfile = () => {
                 />
               </div>
             </form>
-            <Link to="/productlist">
-              <div className="px-3 py-3 mb-4 rounded-2xl text-center text-white cursor-pointer text-sm lg:text-base font-semibold bg-purple4 hover:bg-purple5 transition ease-in-out duration-300">
-                Submit
-              </div>
-            </Link>
+            <div className="border border-solid border-purple4 px-3 py-3 rounded-2xl text-center text-purple4 hover:text-white cursor-pointer text-sm lg:text-base font-semibold hover:bg-purple4">
+              Submit
+            </div>
           </div>
         </div>
       </div>
