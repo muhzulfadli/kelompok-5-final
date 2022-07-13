@@ -7,10 +7,10 @@ export default class PauseOnHover extends Component {
     const settings = {
       className: "center",
       infinite: true,
-      centerMode: true,
-      centerPadding: "200px",
       slidesToShow: 1,
       slidesToScroll: 1,
+      centerMode: true,
+      centerPadding: "180px",
       autoplay: true,
       pauseOnHover: true,
       autoPlaySpeed: 4000,
@@ -18,10 +18,26 @@ export default class PauseOnHover extends Component {
       initialState: 0,
       responsive: [
         {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        },
+        {
           breakpoint: 600,
           settings: {
             slidesToShow: 0.32,
-            slidesToScroll: 1
+            slidesToScroll: 1,
+            centerPadding: "200px"
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 0.31,
+            slidesToScroll: 1,
+            centerPadding: "140px"
           }
         }
       ]

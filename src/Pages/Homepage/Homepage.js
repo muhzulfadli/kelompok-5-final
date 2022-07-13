@@ -36,7 +36,7 @@ const Homepage = () => {
           <div className="lg:flex my-4 grid grid-cols-3 gap-2">
             <button
               type="button"
-              class="text-neutral4 bg-purple1 hover:bg-purple4 hover:text-neutral1 focus:ring-4 focus:outline-none focus:ring-purple2 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-purple2 dark:hover:bg-purple4 dark:focus:ring-purple2"
+              class="text-neutral4 bg-purple1 hover:bg-purple4 hover:text-neutral1 focus:ring-4 focus:outline-none focus:ring-purple2 font-medium rounded-lg text-sm px-2.5 lg:px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-purple2 dark:hover:bg-purple4 dark:focus:ring-purple2"
             >
               <BiSearch className="mr-2" />
               Semua
@@ -50,7 +50,7 @@ const Homepage = () => {
             </button>
             <button
               type="button"
-              class="text-neutral4 bg-purple1 hover:bg-purple4 hover:text-neutral1 focus:ring-4 focus:outline-none focus:ring-purple2 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-purple2 dark:hover:bg-purple4 dark:focus:ring-purple2"
+              class="text-neutral4 bg-purple1 hover:bg-purple4 hover:text-neutral1 focus:ring-4 focus:outline-none focus:ring-purple2 font-medium rounded-lg text-sm px-auto lg:px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-purple2 dark:hover:bg-purple4 dark:focus:ring-purple2"
             >
               <BiSearch className="mr-2" />
               Kendaraan
@@ -64,20 +64,20 @@ const Homepage = () => {
             </button>
             <button
               type="button"
-              class="text-neutral4 bg-purple1 hover:bg-purple4 hover:text-neutral1 focus:ring-4 focus:outline-none focus:ring-purple2 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-purple2 dark:hover:bg-purple4 dark:focus:ring-purple2"
+              class="text-neutral4 bg-purple1 hover:bg-purple4 hover:text-neutral1 focus:ring-4 focus:outline-none focus:ring-purple2 font-medium rounded-lg text-sm px-1 lg:px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-purple2 dark:hover:bg-purple4 dark:focus:ring-purple2"
             >
               <BiSearch className="mr-2" />
               Elektronik
             </button>
             <button
               type="button"
-              class="text-neutral4 bg-purple1 hover:bg-purple4 hover:text-neutral1 focus:ring-4 focus:outline-none focus:ring-purple2 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-purple2 dark:hover:bg-purple4 dark:focus:ring-purple2"
+              class="text-neutral4 bg-purple1 hover:bg-purple4 hover:text-neutral1 focus:ring-4 focus:outline-none focus:ring-purple2 font-medium rounded-lg text-sm px-auto lg:px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-purple2 dark:hover:bg-purple4 dark:focus:ring-purple2"
             >
               <BiSearch className="mr-2" />
               Kesehatan
             </button>
           </div>
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6  ">
+          <div className="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-6  ">
             {products.map((product, index) => {
               return (
                 <Link to="/productdetail">
