@@ -26,25 +26,19 @@ const Login = () => {
     };
 
     axios
-      .post("http://localhost:4000/login", postData)
+      .post("https://binar-second-hand.herokuapp.com/api/v1/auth/login", postData)
       .then((res) => {
-        if (typeof res.data.accessToken !== "undefined") {
-          // menyimpan token di localstorage
-          localStorage.setItem("cobaAccessToken", res.data.accessToken);
-
-          // menyimpan user di redux store
-          const user = jwtDecode(res.data.accessToken);
-          axios.get(`http://localhost:4000/users/${user.sub}`).then((res) => {
-            dispatch(userSlice.actions.addUser({ userData: res.data }));
-            navigate("/");
-          });
-        }
-      })
-      .catch((err) => {
-        setRegStatus({
-          success: false,
-          message: "Maaf, Email atau Password Anda Salah",
-        });
+        console.log(res);
+      //   if (typeof res.data.accessToken !== "undefined") {
+      //       dispatch(userSlice.actions.addUser({ userData: res.data }));
+      //       navigate("/");
+      //   }
+      // })
+      // .catch((err) => {
+      //   setRegStatus({
+      //     success: false,
+      //     message: "Maaf, Email atau Password Anda Salah",
+      //   });
       });
   };
 
