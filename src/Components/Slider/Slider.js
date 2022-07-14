@@ -8,7 +8,7 @@ export default class PauseOnHover extends Component {
       className: "center",
       infinite: true,
       centerMode: true,
-      centerPadding: "200px",
+      centerPadding: "180px",
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,

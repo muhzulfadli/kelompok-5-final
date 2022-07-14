@@ -28,18 +28,20 @@ const App = () => {
           <Route path="logout" element={<Logout />} />
           <Route path="/" element={<Layouts />}>
             <Route index element={<Homepage />} />
-            <Route path="productlist" element={<ProductList />} />
-            <Route path="productdetail" element={<ProductPagebuyer />} />
-            <Route path="productpreview" element={<ProductPreview />} />
-            <Route path="addproduct" element={<AddProduct />} />
-            <Route path="editproduct" element={<EditProduct />} />
+            <Route path="product/" >
+              <Route path="productlist" element={<ProductList />} />
+              <Route path="productdetail/:id" element={<ProductPagebuyer />} />
+              <Route path="productpreview" element={<ProductPreview />} />
+              <Route path="addproduct" element={<AddProduct />} />
+              <Route path="editproduct" element={<EditProduct />} />
+              <Route path="diminati" element={<Diminati />} />
+              <Route path="history" element={<History />} />
+              <Route path="wishlistadaproduct" element={<WishlistAdaproduct />} />
+              <Route path="wishlistkosong" element={<WishlistKosong />} />
+            </Route>
             <Route path="notification" element={<Notification />} />
             <Route path="infoprofile" element={<InfoProfile />} />
             <Route path="infopenawaran" element={<InfoPenawaran />} />
-            <Route path="diminati" element={<Diminati />} />
-            <Route path="wishlistadaproduct" element={<WishlistAdaproduct />} />
-            <Route path="wishlistkosong" element={<WishlistKosong />} />
-            <Route path="history" element={<History />} />
           </Route>
         </Routes>
       </div>
