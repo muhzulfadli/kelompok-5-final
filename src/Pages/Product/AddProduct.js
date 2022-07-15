@@ -4,6 +4,7 @@ import { useDropzone } from "react-dropzone";
 import tw from "tailwind-styled-components";
 import { IoArrowBack } from "react-icons/io5";
 import { BsPlusLg } from "react-icons/bs";
+import { FiChevronDown } from "react-icons/fi";
 
 const AddProduct = () => {
 
@@ -47,15 +48,28 @@ const AddProduct = () => {
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="category">Pilih Kategori</label>
-                    <input
-                      type="text"
-                      name="category"
-                      id="category"
-                      placeholder="Pilih Kategori"
-                      className="px-4 py-3 border border-solid border-gray-300 rounded-2xl focus:outline-purple4"
-                    />
+                <label htmlFor="nama">Kategori</label>
+                <div class="inline-block relative w-full">
+                  <select
+                    name="kategori"
+                    id="kategori"
+                    className="block appearance-none w-full px-4 py-3 border border-solid border-gray-300 rounded-2xl first:text-gray-400 focus:text-black last-of-type:text-black focus:border-purple4 focus:outline-none focus:shadow-outline-purple"
+                  >
+                    <option value="" selected disabled>
+                      Pilih Kategori
+                    </option>
+                    <option value="Hobi">Hobi</option>
+                    <option value="Kendaraan">Kendaraan</option>
+                    <option value="Baju">Baju</option>
+                    <option value="Elektronik">Elektronik</option>
+                    <option value="Kesehatan">Kesehatan</option>
+                  </select>
+
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-400">
+                    <FiChevronDown className="text-2xl" />
                   </div>
+                </div>
+              </div>
                   <div className="flex flex-col gap-2">
                     <label htmlFor="description">Deskripsi</label>
                     <textarea
@@ -77,14 +91,14 @@ const AddProduct = () => {
                   </div>
                   <div className="w-full flex flex-row gap-2 mt-2 mb-4">
                     <div className="basis-1/2">
-                      <Link to="/productpreview">
+                      <Link to="/product/productpreview">
                         <div className="bg-purple4 hover:bg-purple5 py-3 px-4 rounded-2xl font-medium text-sm text-white text-center cursor-pointer transition ease-in-out duration-300">
                           Preview
                         </div>
                       </Link>
                     </div>
                     <div className="basis-1/2">
-                      <Link to="/productlist">
+                      <Link to="/product/productlist">
                         <div className="bg-purple4 hover:bg-purple5 py-3 px-4 rounded-2xl font-medium text-sm text-white text-center cursor-pointer transition ease-in-out duration-300">
                           Terbitkan
                         </div>

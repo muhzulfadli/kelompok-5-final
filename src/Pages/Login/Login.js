@@ -4,11 +4,13 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import userSlice from "../../store/user";
 import axios from "axios";
-import jwtDecode from "jwt-decode";
-import { TbArrowNarrowLeft } from "react-icons/tb";
-import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
+import Form from "../../Components/Login/Form";
+import BackButton from "../../Components/Login/BackButton";
+import Logo from "../../Components/User/Logo";
+import RegisterButton from "../../Components/Login/RegisterButton";
 
 const Login = () => {
+
   const { register, handleSubmit, formState } = useForm();
   const [regStatus, setRegStatus] = useState({
     success: false,
@@ -22,129 +24,54 @@ const Login = () => {
     const postData = {
       email: data.user_email,
       password: data.user_password,
-      isAdmin: false,
     };
 
     axios
-      .post("https://binar-second-hand.herokuapp.com/api/v1/auth/login", postData)
+      .post(
+        "https://binar-second-hand.herokuapp.com/api/v1/auth/login",
+        postData
+      )
       .then((res) => {
         console.log(res);
-      //   if (typeof res.data.accessToken !== "undefined") {
-      //       dispatch(userSlice.actions.addUser({ userData: res.data }));
-      //       navigate("/");
-      //   }
-      // })
-      // .catch((err) => {
-      //   setRegStatus({
-      //     success: false,
-      //     message: "Maaf, Email atau Password Anda Salah",
-      //   });
+        if (typeof res.data.accessToken !== "undefined") {
+          dispatch(userSlice.actions.addUser({ userData: res.data }));
+          navigate("/");
+        }
+      })
+      .catch((err) => {
+        setRegStatus({
+          success: false,
+          message: "Maaf, Email atau Password Anda Salah",
+        });
       });
-  };
-
-  const [passwordShow, setPasswordShow] = useState(false);
-  const togglePassword = () => {
-    setPasswordShow(!passwordShow);
   };
 
   const user = useSelector((store) => store.user.data);
 
   return (
-    <div className="h-screen overflow-hidden font-main">
-      <div className="flex flex-row h-full">
-        <div className="w-2/3 hidden lg:block h-screen bg-gradient-to-t from-purple3 to-purple3/0 ">
-          <div className="flex flex-col h-screen justify-center z-50 absolute font-bold px-16 text-3xl text-white">
-            Second<span>Hand.</span>
-          </div>
-          <img
-            src="/images/login.jpg"
-            alt=""
-            className="opacity-50 inset-2 bg-cover -translate-y-60"
-          />
-        </div>
-        <div className="w-full lg:w-1/3">
-          <div className="container h-screen">
-            <div className="flex flex-col gap-4 justify-center h-full mx-8">
-              <button>
-                <TbArrowNarrowLeft onClick={user !== null ? () => navigate(-1) : navigate("/")} className="my-4 block lg:hidden" />
-              </button>
-              <div className="flex flex-col grow lg:grow-0 gap-2 text-xs w-full justify-center">
-                <Link to="/">
-                  <div className="flex flex-row items-center gap-2 bg-purple4 p-3 w-fit font-semibold text-white rounded-md text-xs">
-                    <img
-                      src="/images/handshaker.svg"
-                      alt=""
-                      className="w-5 h-5"
-                    />
-                    SecondHand
-                  </div>
-                </Link>
-                <h1 className="font-bold text-lg py-4">Masuk</h1>
-                {!regStatus.success && regStatus.message && (
-                  <p className="text-sm text-purple4 italic">
-                    {regStatus.message}
-                  </p>
-                )}
-                <form onSubmit={handleSubmit(formSubmitHandler)}>
-                  <div className="flex flex-col gap-2 mb-2">
-                    <label htmlFor="email">Email</label>
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      placeholder="Contoh: johndee@gmail.com"
-                      className="px-4 py-3 border border-solid border-gray-300 rounded-2xl focus:outline-purple4"
-                      {...register("user_email", { required: true })}
-                      autoComplete="true"
-                    />
-                    <p className="text-xs text-purple-900">
-                      {formState.errors.user_email?.type === "required" &&
-                        "Mohon isi email Anda"}
-                    </p>
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="password">Password</label>
-                    <div className="flex flex-row px-4 py-2 border border-solid border-gray-300 rounded-2xl outline-purple4">
-                      <input
-                        type={passwordShow ? "text" : "password"}
-                        name="password"
-                        id="password"
-                        placeholder="Masukkan Password"
-                        className="grow outline-none"
-                        {...register("user_password", { required: true })}
-                        autoComplete="true"
-                      />
-                      <div onClick={togglePassword}>
-                        {passwordShow ? (
-                          <HiOutlineEyeOff className="w-6 h-6 text-gray-400 cursor-pointer" />
-                        ) : (
-                          <HiOutlineEye className="w-6 h-6 text-gray-400 cursor-pointer" />
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-xs text-purple-900">
-                    {formState.errors.user_password?.type === "required" &&
-                      "Mohon isi password Anda"}
-                  </p>
-                  <div>
-                    <button
-                      type="submit"
-                      className="px-4 py-3 text-white disabled:bg-purple3 bg-purple4 hover:bg-purple5 rounded-2xl w-full my-4 transition ease-in-out duration-300"
-                    >
-                      Masuk
-                    </button>
-                  </div>
-                </form>
+    <div className="w-full lg:w-1/3">
+      <div className="container h-screen">
+        <div className="flex flex-col gap-4 justify-center h-full mx-8">
+          <BackButton user={user} />
+          <div className="flex flex-col grow lg:grow-0 gap-2 text-xs w-full justify-center">
+            <Logo />
+            <h1 className="font-bold text-lg py-4">Masuk</h1>
+            {!regStatus.success && regStatus.message && (
+              <div className="flex justify-center items-center h-full">
+                <p className="text-sm text-white italic absolute text-center rounded-md bg-purple3 p-3">
+                  {regStatus.message}
+                </p>
               </div>
-              <div className="text-xs text-center py-8 lg:py-0">
-                Belum punya akun?{" "}
-                <Link to="/register" className="text-purple4 font-bold">
-                  Daftar di sini
-                </Link>
-              </div>
-            </div>
+            )}
+            {/* Form */}
+            <Form
+              handleSubmit={handleSubmit}
+              formSubmitHandler={formSubmitHandler}
+              register={register}
+              formState={formState}
+            />
           </div>
+          <RegisterButton />
         </div>
       </div>
     </div>
