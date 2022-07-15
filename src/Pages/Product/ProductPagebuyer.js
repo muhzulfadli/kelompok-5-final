@@ -1,10 +1,13 @@
-import React, { Component, useState } from "react";
+import React, { useState, useEffect, Component } from 'react'
+import { useParams } from 'react-router-dom'
 import Alert from "../../Components/Buyer/Alert";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import ModalTawar from "../../Components/Buyer/ModalTawar";
 import { AiFillStar } from "react-icons/ai";
+import axios from 'axios';
+import Responsive from '../../Components/Buyer/Responsive';
 
 export class Fade extends Component {
   constructor(props) {
@@ -63,6 +66,27 @@ export class Fade extends Component {
 }
 
 const ProductPagebuyer = () => {
+
+  const [product, setProduct] = useState(null);
+
+  const params = useParams()
+
+  useEffect(() => {
+      axios.get(`https://binar-second-hand.herokuapp.com/api/v1/product/${params.id}`)
+      .then( res => {
+          if ( res.data !== null ) {
+              setProduct({...res.data.product})
+          } else {
+            return Promise.reject({
+              message: "error",
+            });
+          }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [])
+
   const [isOpen, setIsOpen] = useState(false);
   const [alertOpen, setAlertOpen] = useState(true);
   const [buttonClick, setButtonClick] = useState(true);
@@ -85,27 +109,13 @@ const ProductPagebuyer = () => {
       {/* alert */}
       <Alert setAlertOpen={setAlertOpen} alertOpen={alertOpen} />
 
-      <div className="container mx-auto w-full lg:max-w-4xl md:py-5">
+      <div className="container mx-auto w-full lg:max-w-4xl md:py-5" >
+        {product !== null ?   (
         <div className="grid grid-cols-3 lg:grid-cols-5 gap-6">
           <div className="col-span-3">
             <Fade />
             {/* responsive */}
-            <div className="container mx-auto max-w-4xl mt-3 -translate-y-12">
-              <div className="shadow-auto rounded-lg p-4 bg-white text-base font-medium h-28 mx-4 px-3 md:hidden">
-                <div className="flex justify-between">
-                  <div className="space-y-1">
-                    <h2 className="text-base font-medium">Jam Tangan casio</h2>
-                    <p className="text-sm font-normal text-neutral3">
-                      aksesoris
-                    </p>
-                    <p className="font-normal text-base">Rp 250.000</p>
-                  </div>
-                  <div onClick={handleWishlist} className={`text-2xl ${wishlistClicked? "text-purple4" : "text-neutral2"} hover:text-purple4 cursor-pointer`}>
-                    <AiFillStar />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Responsive handleWishlist={handleWishlist} wishlistClicked={wishlistClicked} product={product} />
             {/* responsive penjual */}
             <div className="container mx-auto max-w-4xl mt-3 -translate-y-11">
               <div className="flex md:hidden shadow-auto rounded-lg bg-white p-4 text-base font-medium  mx-4 px-3">
@@ -140,23 +150,7 @@ const ProductPagebuyer = () => {
                 <div className="shadow-auto rounded-lg p-4 text-sm lg:text-base mx-4 lg:-mx-6">
                   <h2>Deskripsi</h2>
                   <h1 className="py-2 text-neutral3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Accusantium quos eius quis odio itaque, officia consequuntur
-                    dolor, ullam recusandae modi error quas similique
-                    reprehenderit perferendis minus hic. Ducimus illo cumque
-                    numquam voluptatem nulla doloribus ad nobis id hic eius
-                    rerum quisquam, aliquam, quidem sequi. Corporis quaerat
-                    nulla asperiores fugiat vero.
-                  </h1>
-
-                  <h1 className="py-2 text-neutral3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Accusantium quos eius quis odio itaque, officia consequuntur
-                    dolor, ullam recusandae modi error quas similique
-                    reprehenderit perferendis minus hic. Ducimus illo cumque
-                    numquam voluptatem nulla doloribus ad nobis id hic eius
-                    rerum quisquam, aliquam, quidem sequi. Corporis quaerat
-                    nulla asperiores fugiat vero.
+                    {product.deskripsi}
                   </h1>
                 </div>
               </div>
@@ -165,10 +159,10 @@ const ProductPagebuyer = () => {
           <div className="col-span-2">
             <div className="shadow-auto rounded-lg p-5 md:block hidden">
               <div className="flex justify-between">
-                <div className="space-y-1">
-                  <h2 className="text-base font-medium">Jam Tangan casio</h2>
-                  <p className="text-sm font-normal text-neutral3">aksesoris</p>
-                  <p className="font-normal text-base">Rp 250.000</p>
+                <div className="space-y-1" >
+                  <h2 className="text-base font-medium">{product.nama}</h2>
+                  <p className="text-sm font-normal text-neutral3">{product.categories}</p>
+                  <p className="font-normal text-base">Rp {product.harga}</p>
                 </div>
                   <div onClick={handleWishlist} className={`text-2xl ${wishlistClicked? "text-purple4" : "text-neutral2"} hover:text-purple4 cursor-pointer`}>
                     <AiFillStar />
@@ -205,7 +199,9 @@ const ProductPagebuyer = () => {
               </div>
             </div>
           </div>
+        
         </div>
+        ): ("Lagi loading coy...")}
       </div>
     </>
   );
