@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import userSlice from "../../store/user";
@@ -33,8 +33,10 @@ const Login = () => {
       )
       .then((res) => {
         console.log(res);
-        if (typeof res.data.accessToken !== "undefined") {
-          dispatch(userSlice.actions.addUser({ userData: res.data }));
+        if (typeof res.data.token !== "undefined") {
+          localStorage.setItem('accessToken', res.data.token)
+          dispatch(userSlice.actions.addUser({ userData: res.data.data }));
+          alert(res.data.message);
           navigate("/");
         }
       })

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import userSlice from "../../store/user";
@@ -35,10 +35,10 @@ const Register = () => {
       )
       .then((res) => {
         console.log(res);
-        if (res.data.statusCode === "201") {
-          console.log(res.data.statusCode);
-          alert(res.data.message);
+        if (res.data.status === "Created") {
+          localStorage.setItem('accessToken', res.data.token)
           dispatch(userSlice.actions.addUser({ userData: res.data.data }));
+          alert(res.data.message);
           navigate("/");
         }
       })

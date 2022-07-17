@@ -1,5 +1,5 @@
 import React from "react";
-import Slider from "../Slider/Slider";
+import Slider from "./Slider/Slider";
 import Card from "./Card";
 import Button from "./Button";
 import Category from "./Category";
@@ -11,12 +11,9 @@ const Home = ({ product }) => {
         <Slider className="h-60" />
         <div className="container">
           <div className="mt-10 font-bold">Telusuri Kategori</div>
-          {/* Category */}
           <Category />
-          {/* Card Product */}
           <Card product={product} />
         </div>
-        {/* Button */}
         <Button />
       </div>
     </section>
