@@ -7,7 +7,6 @@ import ModalTawar from "../../Components/Buyer/ModalTawar";
 import axios from "axios";
 import Content from "../../Components/Buyer/Content";
 import { AiFillStar } from "react-icons/ai";
-import axios from 'axios';
 import Responsive from '../../Components/Buyer/Responsive';
 import Fade from   '../../Components/Buyer/ProductSlider';
 
