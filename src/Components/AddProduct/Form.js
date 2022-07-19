@@ -1,15 +1,52 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useDropzone } from "react-dropzone";
 import Select from "react-select";
+import makeAnimated from "react-select/animated";
 import tw from "tailwind-styled-components";
 import { BsPlusLg } from "react-icons/bs";
 import productSlice from "././../../store/product";
 import axios from "axios";
-// import requestAPI from "../../Request";
 
-const Form = () => {
+// Style for Preview
+const thumbsContainer = {
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  marginTop: 16
+};
+
+const thumb = {
+  display: 'inline-flex',
+  borderRadius: 2,
+  border: '1px solid #eaeaea',
+  marginBottom: 8,
+  marginRight: 8,
+  width: 100,
+  height: 100,
+  padding: 4,
+  boxSizing: 'border-box'
+};
+
+const thumbInner = {
+  display: 'flex',
+  minWidth: 0,
+  overflow: 'hidden'
+};
+
+const img = {
+  display: 'block',
+  width: 'auto',
+  height: '100%'
+};
+
+// React Select Animation
+const animatedComponents = makeAnimated();
+
+const Form = (props) => {
+
+  // React select style
   const categoryOptions = [
     { value: "Hobi", label: "Hobi", color: "#D0D0D0" },
     { value: "Kendaraan", label: "Kendaraan" },
@@ -51,23 +88,41 @@ const Form = () => {
     }),
   };
 
-  const { getRootProps, getInputProps } = useDropzone({
+  // React Dropzone settings
+  const [files, setFiles] = useState([]);
+  const {getRootProps, getInputProps} = useDropzone({
+    maxFiles: 4,
     accept: {
-      "image/*": [],
+      'image/*': []
     },
-    onDrop: (acceptedFiles) => {
-      setPhotos([
-        ...photos,
-        {
-          photo: acceptedFiles[0],
-          url: window.URL.createObjectURL(acceptedFiles[0]),
-        },
-      ]);
-    },
+    onDrop: acceptedFiles => {
+      setFiles(acceptedFiles.map(file => Object.assign(file, {
+        preview: URL.createObjectURL(file)
+      })));
+    }
   });
+  
+  const thumbs = files.map(file => (
+    <div style={thumb} key={file.name}>
+      <div style={thumbInner}>
+        <img
+          src={file.preview}
+          style={img}
+          alt=""
+          // Revoke data uri after image is loaded
+          onLoad={() => { URL.revokeObjectURL(file.preview) }}
+        />
+      </div>
+    </div>
+  ));
 
-  const [category, setCategory] = useState([]);
-  const [photos, setPhotos] = useState([]);
+  useEffect(() => {
+    return () => files.forEach(file => URL.revokeObjectURL(file.preview));
+  }, []);
+
+  // Dropzone End =============================================
+
+  const [categories, setCategories] = useState([]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -75,25 +130,11 @@ const Form = () => {
   const product = useSelector((state) => state.product.data);
   console.log(product);
 
-  useEffect(() => {
-    if (product) {
-      setCategory(product.categories);
-      setPhotos(() => {
-        product.product_images.map((img) => {
-          return {
-            photo: img,
-            url: window.URL.createObjectURL(img),
-          };
-        });
-      });
-    }
-  }, []);
-
-  console.log(category);
+  console.log(categories);
 
   const inputName = useRef();
   const inputPrice = useRef();
-  const inputCategory = useRef();
+  const inputCategories = useRef();
   const inputDescription = useRef();
 
   const formSubmitHandler = async (event) => {
@@ -108,39 +149,45 @@ const Form = () => {
     };
     console.log(submittedProduct);
 
-    for (let key in submittedProduct) {
-      formData.append(key, submittedProduct[key]);
+    for (let data in submittedProduct) {
+      formData.append(data, submittedProduct[data]);
     }
 
-    photos.forEach((photo) => {
-      formData.append("product_images", photo.photo, photo.photo.name);
+    files.forEach((file) => {
+      formData.append("product_photos", file, file.name);
+      console.log(file);
     });
 
-    category.forEach((cat) => {
+    categories.forEach((cat) => {
       formData.append("categories[]", cat.value);
     });
 
     if (action === "add") {
       try {
-        await axios.post("https://binar-second-hand.herokuapp.com/api/v1/product", formData, {
-          headers: { 
-            Authorization: localStorage.getItem("accessToken") 
-          },
-        });
+        await axios.post(
+          "https://binar-second-hand.herokuapp.com/api/v1/product",
+          formData,
+          {
+            headers: {
+              Authorization: localStorage.getItem("accessToken"),
+            },
+          }
+        );
+        alert("Success add product");
         navigate("/product/productlist");
       } catch (error) {
-        console.log(error);
+        alert(error.message);
       }
     } else {
       var data = {
         nama: formData.get("nama"),
         harga: formData.get("harga"),
         deskripsi: formData.get("deskripsi"),
-        category: category,
+        category: categories,
         product_images: formData.get("product_images"),
       };
-
       dispatch(productSlice.actions.addProduct(data));
+      console.log(data)
       navigate("/product/productpreview");
     }
   };
@@ -179,9 +226,11 @@ const Form = () => {
             <Select
               name="kategori"
               id="kategori"
+              components={animatedComponents}
               options={categoryOptions}
               styles={customStyles}
-              ref={inputCategory}
+              ref={inputCategories}
+              onChange={(item) => setCategories(item)}
               placeholder="Pilih Kategori"
               isMulti
               required
@@ -194,35 +243,26 @@ const Form = () => {
             name="description"
             id="description"
             ref={inputDescription}
-            placeholder="Contoh: Jalan Ikan Hiu 33"
+            placeholder="Deskripsikan Produk Anda"
             className="px-4 py-3 border border-solid border-gray-300 rounded-2xl focus:outline-purple4"
           />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="fotoProduk">Foto Produk</label>
-          <StyledDiv {...getRootProps()}>
-            <input {...getInputProps()} />
-            {photos.length < 4 && (
+          <section >
+            <Dropzone {...getRootProps({ className: "dropzone" })}>
+              <input {...getInputProps()} />
               <p className="font-medium font-main">
-                {photos.length > 0 &&
-                  photos.map((x, index) => (
-                    <div key={index}>
-                      <BsPlusLg
-                        onClick={() => {
-                          let arr = [...photos];
-                          let index = arr.indexOf(x);
-                          if (index !== -1) {
-                            arr.splice(index, 1);
-                            setPhotos(arr);
-                          }
-                        }}
-                        className="text-lg"
-                      />
-                    </div>
-                  ))}
+                <BsPlusLg className="text-lg" />
               </p>
-            )}
-          </StyledDiv>
+            </Dropzone>
+            <aside style={thumbsContainer}>
+              {thumbs}
+            </aside>
+          </section>
+          <aside className="text-xs italic">
+            <h4>Max. 4 images</h4>
+          </aside>
         </div>
         <div className="w-full flex flex-row gap-2 mt-2 mb-4">
           <div className="basis-1/2">
@@ -253,7 +293,7 @@ const Form = () => {
   );
 };
 
-const StyledDiv = tw.div`
+const Dropzone = tw.div`
   text-neutral2
   rounded-md
   border-2
