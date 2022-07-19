@@ -10,7 +10,7 @@ const Diminati = () => {
 
   useEffect(() => {
     axios
-      .get("http://fakestoreapi.com/products/")
+      .get("https://binar-second-hand.herokuapp.com/api/v1/product/offer")
       .then((res) => {
         console.log(res);
         if (res.data !== null) {

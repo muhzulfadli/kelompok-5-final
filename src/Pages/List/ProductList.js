@@ -7,15 +7,15 @@ import { AiOutlineClose, AiOutlineStar } from "react-icons/ai";
 
 function ProductList() {
   const [alertOpen, setAlertOpen] = useState(true);
-  const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://fakestoreapi.com/products/")
+      .get("https://binar-second-hand.herokuapp.com/api/v1/product")
       .then((res) => {
-        console.log(res);
-        if (res.data !== null) {
-          setProducts([...res.data]);
+        // console.log(res);
+        if (res.data.products !== null) {
+          setProduct([...res.data.products]);
         } else {
           return Promise.reject({
             message: "error",
@@ -26,7 +26,6 @@ function ProductList() {
         console.log(error);
       });
   }, []);
-
   return (
     <div>
       <div className="container max-w-screen-lg mx-auto">
@@ -149,11 +148,9 @@ function ProductList() {
                 </div>
               </div>
             </Link>
-            {products.map((product, index) => {
+            {product.map((data) => {
               return (
-                <Link to="/editproduct">
-                  <ProductCard key={index} product={product} />
-                </Link>
+                  <ProductCard key={data.id} data={data} />
               );
             })}
           </div>
