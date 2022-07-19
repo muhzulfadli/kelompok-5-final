@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react";
 
-const ModalTawar = ({isOpen, setIsOpen, setAlertOpen, setButtonClick}) => {
+const ModalTawar = ({ isOpen, setIsOpen, setAlertOpen, setButtonClick }) => {
   return (
     <div
-      className={`bg-black bg-opacity-50 absolute top-0 left-0 inset-0 ${
+      className={`bg-neutral5 bg-opacity-50 absolute top-0 left-0 inset-0 ${
         isOpen ? "flex" : "hidden"
-      } justify-center items-center z-50`}
+      } justify-center items-end lg:items-center z-50`}
       id="overlay"
     >
-      <div className="bg-white rounded-2xl">
+      <div className="bg-neutral1 lg:rounded-2xl bottom-0 fixed lg:block lg:bottom-auto rounded-t-2xl w-screen lg:w-fit">
         <div className="flex justify-end items-center pr-4 pt-3">
           <button onClick={() => setIsOpen(false)}>
             <svg
@@ -33,8 +33,8 @@ const ModalTawar = ({isOpen, setIsOpen, setAlertOpen, setButtonClick}) => {
         </div>
         <div className="w-[350px] px-6">
           <p className="ml-2 pt-2 text-gray-500 ">
-            Harga tawaranmu akan diketahui penjual, jika penjual cocok
-            kamu akan segera dihubungi penjual.
+            Harga tawaranmu akan diketahui penjual, jika penjual cocok kamu akan
+            segera dihubungi penjual.
           </p>
         </div>
         <div className="col-span-2 pt-1 p-6">
@@ -78,7 +78,7 @@ const ModalTawar = ({isOpen, setIsOpen, setAlertOpen, setButtonClick}) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ModalTawar
+export default ModalTawar;

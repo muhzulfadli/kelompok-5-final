@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NotificationCard = () => {
+const NotificationCard = (closeClick) => {
   return (
     <div className="absolute origin-top-right w-80 bg-white shadow-auto rounded-xl px-4 py-3 -ml-72 mt-8">
       <Link to="/notification">
