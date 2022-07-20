@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Fade } from "../../Pages/Product/ProductPagebuyer";
+import Fade from "../../Pages/Product/ProductPagebuyer";
 import { AiFillStar } from "react-icons/ai";
 import Mobile from "./Mobile";
 import Seller from "./Seller";
