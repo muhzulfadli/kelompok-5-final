@@ -7,7 +7,7 @@ const Category = () => {
   return (
     <div className="shadow-auto rounded-lg p-6 h-fit lg:w-60 w-11/12">
       <h2 className="text-xl pb-4">Kategori</h2>
-      <Link to="/product/productlist">
+      <Link to="/product">
         <button className="flex items-center space-x-2 text-neutral3 py-3 w-full border-b border-neutral2">
           <BiCube />
           <div className="w-8/12 text-left text-neutral6">Semua Produk</div>

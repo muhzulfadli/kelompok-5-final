@@ -29,7 +29,7 @@ const ProductPagebuyer = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [params.id]);
+  }, []);
 
   const [isOpen, setIsOpen] = useState(false);
   const [alertOpen, setAlertOpen] = useState(true);
@@ -38,6 +38,7 @@ const ProductPagebuyer = () => {
   return (
     <div>
       <ModalTawar
+        product={product}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         setAlertOpen={setAlertOpen}

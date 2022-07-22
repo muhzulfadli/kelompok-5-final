@@ -6,7 +6,7 @@ import { BiCube, BiHeart, BiDollar } from "react-icons/bi";
 const CategoryMobile = () => {
   return (
     <div className="lg:hidden flex gap-4 h-full my-8">
-      <Link to="/product/productlist">
+      <Link to="/product">
         <button className="flex items-center gap-2 bg-purple1 hover:bg-purple4 hover:text-white px-4 py-4 rounded-xl">
           <BiCube className="font-bold text-xl" />
           <p className="text-sm">Produk</p>

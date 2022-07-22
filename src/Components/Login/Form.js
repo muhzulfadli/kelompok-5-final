@@ -25,6 +25,7 @@ const LoginForm = ({
           className="px-4 py-3 border border-solid border-gray-300 rounded-2xl focus:outline-purple4"
           {...register("user_email", { required: true })}
           autoComplete="true"
+          data-testid="form-login-field"
         />
         <p className="text-xs text-purple-900">
           {formState.errors.user_email?.type === "required" &&

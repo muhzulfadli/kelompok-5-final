@@ -1,11 +1,11 @@
 import React from "react";
-import Content from "../../Components/Profile/Content";
+import Form from "../../Components/Profile/Form"
 
 const InfoProfile = () => {
   return (
     <div className="w-full min-h-screen">
       <div className="container">
-        <Content />
+        <Form />
       </div>
     </div>
   );
