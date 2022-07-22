@@ -31,7 +31,7 @@ const Menu = ({ button, handleClick, user, setClick }) => {
         )}
         {user !== null && (
           <div onClick={closeMobileMenu} className="text-center">
-            <Link to="/product/productlist">Daftar Jual</Link>
+            <Link to="/product">Daftar Jual</Link>
           </div>
         )}
         {user !== null && (

@@ -92,7 +92,8 @@ const ModalTawar = ({product, isOpen, setIsOpen, setAlertOpen, setButtonClick })
                     className="pl-3 focus:outline-none"
                     required
                     placeholder="Rp 0,00" 
-                    ref={hargaTawar}              
+                    ref={hargaTawar}  
+                    data-testid="input-price"            
                   ></input>
                 </div>
               </div>

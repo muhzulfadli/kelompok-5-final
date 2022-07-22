@@ -46,7 +46,6 @@ const Content = ({ product, setIsOpen, buttonClick }) => {
               AiFillStar={AiFillStar}
               setIsOpen={setIsOpen}
             />
-
             <Seller />
           </div>
         </div>

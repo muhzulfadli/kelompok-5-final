@@ -13,6 +13,10 @@ const Card = () => {
     axios
       .get("https://binar-second-hand.herokuapp.com/api/v1/product")
       .then((res) => {
+<<<<<<< HEAD
+=======
+        // console.log(res);
+>>>>>>> 5d535600419bce09f4b8053aee670f4719c92937
         if (res.data.products !== null) {
           setProduct([...res.data.products]);
         } else {
@@ -25,7 +29,7 @@ const Card = () => {
         console.log(error);
       });
   }, []);
-
+  
   return (
     <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
       <Link to="/product/addproduct">
@@ -55,9 +59,7 @@ const Card = () => {
       </Link>
       {product.map((data) => {
         return (
-          // <Link to="/editproduct">
           <ProductCard key={data.id} data={data} />
-          // </Link>
         );
       })}
     </div>

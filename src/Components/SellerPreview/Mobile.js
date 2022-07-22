@@ -2,16 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FiEdit } from "react-icons/fi";
 
-const Mobile = () => {
+const Mobile = (product) => {
   return (
     <div>
       <div className="container mx-auto max-w-4xl mt-3 -translate-y-12">
         <div className="shadow-auto rounded-lg p-4 bg-white text-base font-medium h-28 mx-4 px-3 md:hidden">
           <div className="flex justify-between">
             <div>
-              <h2 className="text-base font-medium">Jam Tangan casio</h2>
-              <p className="text-sm font-normal text-neutral3">aksesoris</p>
-              <p className="font-normal text-base">Rp 250.000</p>
+              <h2 className="text-base font-medium">nama</h2>
+              <p className="text-sm font-normal text-neutral3">kategori</p>
+              <p className="font-normal text-base">Rp 80000</p>
             </div>
             <div className="lg:hidden">
               <Link to="/editproduct">
