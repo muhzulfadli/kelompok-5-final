@@ -5,12 +5,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const InfoProfil = () => {
-
   const navigate = useNavigate()
-
   const user = useSelector((store) => store.user.data);
-  console.log(user);
-
   const [imgProfile, setImgProfile] = useState("");
   const [nama, setNama] = useState("");
   const [kota, setKota] = useState("");
@@ -53,11 +49,10 @@ const InfoProfil = () => {
       })
       .catch((err) => {
         console.log('ini ada kesalahan')
-        alert("Ada kesalahan");
+        // alert("Ada kesalahan");
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -85,6 +80,8 @@ const InfoProfil = () => {
 
   return (
     <div className="App">
+      {console.log(gambar)}
+      {console.log(imgProfile)}
       <div className="relative mt-3 h-auto w-full p-3">
         <button>
           <IoArrowBack

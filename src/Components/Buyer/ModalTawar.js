@@ -1,7 +1,38 @@
-import React from "react";
+import axios from "axios";
+import React, { useRef } from "react";
+import { useParams } from "react-router-dom";
 
-const ModalTawar = ({ isOpen, setIsOpen, setAlertOpen, setButtonClick }) => {
+const ModalTawar = ({product, isOpen, setIsOpen, setAlertOpen, setButtonClick }) => {
+
+  const hargaTawar = useRef()
+
+  const param = useParams()
+
+  const submitHandler = async (event) => {
+
+    event.preventDefault();
+
+    const postData = {
+      harga: hargaTawar.current.value,
+    }
+
+    await axios.post(`https://binar-second-hand.herokuapp.com/api/v1/product/${param.id}/offer`, postData, {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    })
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
+
   return (
+    <>
+    {product !== null ? (
     <div
       className={`bg-neutral5 bg-opacity-50 absolute top-0 left-0 inset-0 ${
         isOpen ? "flex" : "hidden"
@@ -41,46 +72,51 @@ const ModalTawar = ({ isOpen, setIsOpen, setAlertOpen, setButtonClick }) => {
           <div className="flex shadow-auto rounded-2xl p-3 bg-[#b8b7b776]">
             <img
               className="w-14 rounded-xl"
-              src="/images/picprofile.png"
+              src={product.product_photos}
               alt=""
             />
             <div className="ml-4">
-              <h1 className="font-medium text-sm">Jam Tangan Casio</h1>
-              <h1 className="text-sm font-normal ">Rp 250.000</h1>
+              <h1 className="font-medium text-sm">{product.nama}</h1>
+              <h1 className="text-sm font-normal ">Rp {product.harga}</h1>
             </div>
           </div>
           <div className="pt-5 ml-2">
             <h1>Harga Tawar</h1>
           </div>
-          <div>
-            <div className="col-span-2 pt-1 py-3 px-2 ">
-              <div className="flex shadow-auto rounded-2xl py-4 bg-[#fffcfc]">
-                <input
-                  type="number"
-                  className="pl-3 focus:outline-none"
-                  required
-                  defaultValue="Rp 0,00"
-                  variant="filled"
-                  data-testid="input-price"
-                ></input>
+          <form onSubmit={submitHandler}>
+            <div>
+              <div className="col-span-2 pt-1 py-3 px-2 ">
+                <div className="flex shadow-auto rounded-2xl py-4 bg-[#fffcfc]">
+                  <input
+                    type= "number"
+                    className="pl-3 focus:outline-none"
+                    required
+                    placeholder="Rp 0,00" 
+                    ref={hargaTawar}  
+                    data-testid="input-price"            
+                  ></input>
+                </div>
               </div>
             </div>
-          </div>
-          <button
-            onClick={() => {
-              setAlertOpen(false);
-              setIsOpen(false);
-              setButtonClick(false);
-            }}
-            className="bg-purple4 hover:bg-purple5 w-full py-3 mt-5 rounded-2xl font-medium text-sm text-white transition ease-in-out duration-300"
-            id="tertarik-btn"
-          >
-            Kirim
-          </button>
+            <button
+              onClick={() => {
+                setAlertOpen(false);
+                setIsOpen(false);
+                setButtonClick(false);
+              }}
+              className="bg-purple4 hover:bg-purple5 w-full py-3 mt-5 rounded-2xl font-medium text-sm text-white transition ease-in-out duration-300"
+              id="tertarik-btn"
+            >
+              Kirim
+            </button>
+          </form>
         </div>
       </div>
     </div>
+    ) : (
+      <br></br>
+    )}
+    </>
   );
-};
-
+}
 export default ModalTawar;

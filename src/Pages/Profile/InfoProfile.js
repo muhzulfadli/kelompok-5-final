@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "../../Components/Profile/Form";
+import Form from "../../Components/Profile/Form"
 
 const InfoProfile = () => {
   return (

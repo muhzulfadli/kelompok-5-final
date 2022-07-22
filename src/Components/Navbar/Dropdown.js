@@ -1,10 +1,26 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, Transition } from "@headlessui/react";
 import { BiUser, BiLogOut } from "react-icons/bi";
 import { RiSettings4Fill } from "react-icons/ri";
+import axios from "axios";
 
 const Dropdown = () => {
+
+  const [user, setUser] = useState({})
+
+  useEffect(() => {
+    axios.get("https://binar-second-hand.herokuapp.com/api/v1/profile", 
+    {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    })
+    .then(res => {
+      setUser(res.data.userProfile)
+    })
+  }, [])
+
   const classNames = (...classes) => {
     return classes.filter(Boolean).join(" ");
   };
@@ -33,8 +49,8 @@ const Dropdown = () => {
                 <div
                   className="text-purple4 flex items-center gap-4 px-4 py-2 text-sm font-medium"
                 >
-                  <img src="/images/picprofile.png" alt="profile" className="rounded-full" />
-                  Username
+                  <img src={user.image_url} alt="profile" className="rounded-full" />
+                  {user.nama}
                   </div>
               )}
             </Menu.Item>

@@ -7,7 +7,7 @@ import Layouts from './Layouts/Main/Layouts';
 import ProductPreview from './Pages/Product/ProductPreview';
 import Notification from "./Pages/Notification/Notification";
 import ProductPagebuyer from './Pages/Product/ProductPagebuyer';
-import ProductList from './Pages/List/ProductList'
+import ProductList from './Pages/List/ProductList';
 import Homepage from "./Pages/Homepage/Homepage";
 import AddProduct from "./Pages/Product/AddProduct";
 import EditProduct from "./Pages/Product/EditProduct";
@@ -19,7 +19,11 @@ import History from "./Pages/Product/History";
 import User from "./Layouts/User/User";
 // import ProtectedRoute from "./Components/HOC/ProtectedRoute";
 
+
+
 const App = () => {
+  // console.log(product)
+
   return (
     <BrowserRouter>
       <div className="font-main">
@@ -36,12 +40,12 @@ const App = () => {
 
             {/* PROTECTED */}
             {/* <Route path="/" element={<ProtectedRoute />}> */}
-              <Route path="product/"  >
+              <Route path="product/" >
                 <Route index element={<ProductList />} />
                 <Route path="productdetail/:id" element={<ProductPagebuyer />} />
-                <Route path="productpreview" >
+                <Route path="productpreview">
                   <Route index element={<ProductPreview />} />
-                  <Route path=":id" element={<ProductPreview />} />
+                  <Route path= ":id" element={<ProductPreview />} />
                 </Route>
                 <Route path="addproduct" element={<AddProduct />} />
                 <Route path="editproduct" element={<EditProduct />} />

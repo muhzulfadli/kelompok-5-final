@@ -40,6 +40,7 @@ const ProductPagebuyer = () => {
     <>
       {/* modal */}
       <ModalTawar
+        product={product}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         setAlertOpen={setAlertOpen}
