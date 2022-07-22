@@ -5,8 +5,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const InfoProfil = () => {
+
   const navigate = useNavigate()
+
   const user = useSelector((store) => store.user.data);
+  console.log(user);
+
   const [imgProfile, setImgProfile] = useState("");
   const [nama, setNama] = useState("");
   const [kota, setKota] = useState("");
@@ -32,12 +36,10 @@ const InfoProfil = () => {
     }
   };
 
-  // const token = localStorage.getItem("accessToken")
-
   useEffect(() => {
     axios.get("https://binar-second-hand.herokuapp.com/api/v1/profile", {
       headers: {
-          Authorization: user? localStorage.getItem("accessToken") : null,
+          Authorization: user ? localStorage.getItem("accessToken") : null,
       },
     })
       .then((res) => {
@@ -51,9 +53,11 @@ const InfoProfil = () => {
       })
       .catch((err) => {
         console.log('ini ada kesalahan')
-        // alert("Ada kesalahan");
+        alert("Ada kesalahan");
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -81,8 +85,6 @@ const InfoProfil = () => {
 
   return (
     <div className="App">
-      {console.log(gambar)}
-      {console.log(imgProfile)}
       <div className="relative mt-3 h-auto w-full p-3">
         <button>
           <IoArrowBack
@@ -114,7 +116,7 @@ const InfoProfil = () => {
                       className="hover:cursor-pointer w-48 h-48 rounded-2xl object-contain mt-3"
                     />
                   </div>
-                  <p className="mt-3 text-center hover:text-slate-600 hover:cursor-pointer">
+                  <p className="mt-3 text-center hover:text-slate-600 hover:cursor-pointer italic">
                     Klik untuk mengubah gambar
                   </p>
                 </label>
@@ -151,7 +153,7 @@ const InfoProfil = () => {
                 onChange={(e) => {
                   setNama(e.target.value);
                 }}
-                className="mb-6 w-full h-[48px] shadow appearance-none text-gray-700 leading-tight rounded-2xl border-2 focus:outline-none focus:shadow-outline indent-3 focus:border-black focus:border-4"
+                className="mb-6 w-full py-3 shadow appearance-none text-gray-700 leading-tight rounded-2xl border-2 focus:outline-none focus:shadow-outline indent-3 focus:border-purple4 focus:border-1"
                 placeholder="Nama"
                 required
               />
@@ -164,7 +166,7 @@ const InfoProfil = () => {
                 onChange={(e) => {
                   setKota(e.target.value);
                 }}
-                className="mb-6 w-full h-[48px] shadow appearance-none text-gray-700 leading-tight rounded-2xl border-2 focus:outline-none focus:shadow-outline indent-3 focus:border-black focus:border-4"
+                className="mb-6 w-full py-3 shadow appearance-none text-gray-700 leading-tight rounded-2xl border-2 focus:outline-none focus:shadow-outline indent-3 focus:border-purple4 focus:border-1"
                 placeholder="Kota"
                 required
               />
@@ -177,7 +179,7 @@ const InfoProfil = () => {
                 onChange={(e) => {
                   setAlamat(e.target.value);
                 }}
-                className="mb-6 w-full h-[80px] shadow appearance-none text-gray-700 leading-tight rounded-2xl border-2 focus:outline-none focus:shadow-outline focus:border-black focus:border-4"
+                className="mb-6 w-full p-3 shadow appearance-none text-gray-700 leading-tight rounded-2xl border-2 focus:outline-none focus:shadow-outline focus:border-purple4 focus:border-1"
                 required
               ></textarea>
               <label htmlFor="nohp" className="mb-1">
@@ -191,14 +193,14 @@ const InfoProfil = () => {
                 onChange={(e) => {
                   setNohp(e.target.value);
                 }}
-                className="mb-6 w-full h-[48px] shadow appearance-none text-gray-700 leading-tight rounded-2xl border-2 focus:outline-none focus:shadow-outline indent-3 focus:border-black focus:border-4"
+                className="mb-6 w-full py-3 shadow appearance-none text-gray-700 leading-tight rounded-2xl border-2 focus:outline-none focus:shadow-outline indent-3 focus:border-purple4 focus:border-1"
                 placeholder="contoh: +628123456789"
                 required
               />
               <button
                 type="submit"
                 onClick={handleOnSubmit}
-                className="mb-1 w-full h-[48px] shadow appearance-none bg-purple-700 leading-tight rounded-2xl border-2 focus:outline-none focus:shadow-outline indent-3 hover:scale-90 focus:bg-purple-500"
+                className="mb-1 w-full py-3 appearance-none bg-purple4 leading-tight rounded-2xl border-2 focus:outline-none focus:shadow-outline indent-3 hover:bg-purple5 focus:bg-purple4"
               >
                 <p className="text-white">Simpan</p>
               </button>
