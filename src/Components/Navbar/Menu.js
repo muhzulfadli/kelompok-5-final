@@ -11,7 +11,7 @@ const Menu = () => {
 
   return (
     <div className="flex space-x-8 text-lg relative">
-      <Link to="/product/productlist">
+      <Link to="/product">
         <IoList className="cursor-pointer" />
       </Link>
       <div className="relative inline-block text-left">

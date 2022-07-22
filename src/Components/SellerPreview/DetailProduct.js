@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const DetailProduct = (product) => {
+const DetailProduct = ({product}) => {
   return (
     <div className="col-span-2">
       <div className="shadow-auto hidden lg:block rounded-lg p-5">
-        <h2 className="text-base font-medium">{product.nama}</h2>
-        <p className="text-sm font-normal text-neutral3">{product.categories}</p>
-        <p className="font-normal text-base">Rp {product.harga}</p>
+        <h2 className="text-base font-medium">nama</h2>
+        <p className="text-sm font-normal text-neutral3">kategori</p>
+        <p className="font-normal text-base">Rp 70000</p>
         <Link to="/product/productlist">
           <button className="bg-neutral1 w-full py-3 mt-2 rounded-2xl font-medium text-sm border-2 border-purple4 hover:bg-purple4 text-purple5 hover:text-white transition ease-in-out duration-300">
             Terbitkan

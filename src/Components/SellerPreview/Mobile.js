@@ -9,9 +9,9 @@ const Mobile = (product) => {
         <div className="shadow-auto rounded-lg p-4 bg-white text-base font-medium h-28 mx-4 px-3 md:hidden">
           <div className="flex justify-between">
             <div>
-              <h2 className="text-base font-medium">{product.nama}</h2>
-              <p className="text-sm font-normal text-neutral3">{product.categories}</p>
-              <p className="font-normal text-base">Rp {product.harga}</p>
+              <h2 className="text-base font-medium">nama</h2>
+              <p className="text-sm font-normal text-neutral3">kategori</p>
+              <p className="font-normal text-base">Rp 80000</p>
             </div>
             <div className="lg:hidden">
               <Link to="/editproduct">

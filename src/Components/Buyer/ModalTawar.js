@@ -56,10 +56,12 @@ const ModalTawar = ({ isOpen, setIsOpen, setAlertOpen, setButtonClick }) => {
             <div className="col-span-2 pt-1 py-3 px-2 ">
               <div className="flex shadow-auto rounded-2xl py-4 bg-[#fffcfc]">
                 <input
+                  type="number"
                   className="pl-3 focus:outline-none"
                   required
                   defaultValue="Rp 0,00"
                   variant="filled"
+                  data-testid="input-price"
                 ></input>
               </div>
             </div>

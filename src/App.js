@@ -36,8 +36,8 @@ const App = () => {
 
             {/* PROTECTED */}
             {/* <Route path="/" element={<ProtectedRoute />}> */}
-              <Route path="product/" >
-                <Route path="productlist" element={<ProductList />} />
+              <Route path="product/"  >
+                <Route index element={<ProductList />} />
                 <Route path="productdetail/:id" element={<ProductPagebuyer />} />
                 <Route path="productpreview/:id" element={<ProductPreview />} />
                 <Route path="addproduct" element={<AddProduct />} />
