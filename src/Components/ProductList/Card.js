@@ -13,10 +13,6 @@ const Card = () => {
     axios
       .get("https://binar-second-hand.herokuapp.com/api/v1/product")
       .then((res) => {
-<<<<<<< HEAD
-=======
-        // console.log(res);
->>>>>>> 5d535600419bce09f4b8053aee670f4719c92937
         if (res.data.products !== null) {
           setProduct([...res.data.products]);
         } else {

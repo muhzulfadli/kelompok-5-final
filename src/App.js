@@ -40,7 +40,6 @@ const App = () => {
 
             {/* PROTECTED */}
             {/* <Route path="/" element={<ProtectedRoute />}> */}
-<<<<<<< HEAD
               <Route path="product/" >
                 <Route index element={<ProductList />} />
                 <Route path="productdetail/:id" element={<ProductPagebuyer />} />
@@ -48,12 +47,6 @@ const App = () => {
                   <Route index element={<ProductPreview />} />
                   <Route path= ":id" element={<ProductPreview />} />
                 </Route>
-=======
-              <Route path="product/"  >
-                <Route index element={<ProductList />} />
-                <Route path="productdetail/:id" element={<ProductPagebuyer />} />
-                <Route path="productpreview/:id" element={<ProductPreview />} />
->>>>>>> 5d535600419bce09f4b8053aee670f4719c92937
                 <Route path="addproduct" element={<AddProduct />} />
                 <Route path="editproduct" element={<EditProduct />} />
                 <Route path="diminati" element={<Diminati />} />
