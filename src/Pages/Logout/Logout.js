@@ -7,7 +7,7 @@ const Logout = () => {
 
   const dispatch = useDispatch();
 
-  localStorage.removeItem('cobaAccessToken')
+  localStorage.removeItem('accessToken')
   dispatch( userSlice.actions.removeUser() )
 
   return (

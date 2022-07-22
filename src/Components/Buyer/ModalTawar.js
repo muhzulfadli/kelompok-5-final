@@ -8,7 +8,7 @@ const ModalTawar = ({ isOpen, setIsOpen, setAlertOpen, setButtonClick }) => {
       } justify-center items-end lg:items-center z-50`}
       id="overlay"
     >
-      <div className="bg-neutral1 lg:rounded-2xl rounded-t-2xl w-screen lg:w-fit">
+      <div className="bg-neutral1 lg:rounded-2xl bottom-0 fixed lg:block lg:bottom-auto rounded-t-2xl w-screen lg:w-fit">
         <div className="flex justify-end items-center pr-4 pt-3">
           <button onClick={() => setIsOpen(false)}>
             <svg
@@ -56,10 +56,12 @@ const ModalTawar = ({ isOpen, setIsOpen, setAlertOpen, setButtonClick }) => {
             <div className="col-span-2 pt-1 py-3 px-2 ">
               <div className="flex shadow-auto rounded-2xl py-4 bg-[#fffcfc]">
                 <input
+                  type="number"
                   className="pl-3 focus:outline-none"
                   required
                   defaultValue="Rp 0,00"
                   variant="filled"
+                  data-testid="input-price"
                 ></input>
               </div>
             </div>
