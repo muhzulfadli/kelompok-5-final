@@ -130,8 +130,6 @@ const Form = (props) => {
   const product = useSelector((state) => state.product.data);
   console.log(product);
 
-  console.log(categories);
-
   const inputName = useRef();
   const inputPrice = useRef();
   const inputCategories = useRef();
