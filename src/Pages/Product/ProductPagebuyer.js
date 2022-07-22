@@ -6,9 +6,10 @@ import axios from "axios";
 import Content from "../../Components/Buyer/Content";
 
 const ProductPagebuyer = () => {
+
   const [product, setProduct] = useState(null);
 
-  const params = useParams();
+  const params = useParams()
 
   useEffect(() => {
     axios
@@ -28,27 +29,26 @@ const ProductPagebuyer = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [params.id])
 
   const [isOpen, setIsOpen] = useState(false);
   const [alertOpen, setAlertOpen] = useState(true);
   const [buttonClick, setButtonClick] = useState(true);
 
   return (
-    <div>
+    <>
+      {/* modal */}
       <ModalTawar
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         setAlertOpen={setAlertOpen}
         setButtonClick={setButtonClick}
       />
+
+      {/* alert */}
       <Alert setAlertOpen={setAlertOpen} alertOpen={alertOpen} />
-      <Content
-        product={product}
-        setIsOpen={setIsOpen}
-        buttonClick={buttonClick}
-      />
-    </div>
+     <Content product={product} setIsOpen={setIsOpen} buttonClick={buttonClick}/>
+    </>
   );
 };
 
