@@ -118,7 +118,7 @@ const Form = (props) => {
 
   useEffect(() => {
     return () => files.forEach(file => URL.revokeObjectURL(file.preview));
-  }, []);
+  }, [files]);
 
   // Dropzone End =============================================
 
