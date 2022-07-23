@@ -12,6 +12,8 @@ const Content = ({ product, setIsOpen, buttonClick }) => {
     setWishlistClicked((current) => !current);
   };
 
+  console.log(product);
+
   return (
     <div className="container mx-auto w-full lg:max-w-4xl md:py-5">
       {product !== null ? (

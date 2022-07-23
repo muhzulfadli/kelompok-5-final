@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Title from "../../Components/Diminati/Title";
 import Seller from "../../Components/Product/Seller";
 import CategoryMobile from "../../Components/Diminati/CategoryMobile";
@@ -7,20 +7,22 @@ import axios from "axios";
 
 const Diminati = () => {
 
-  useEffect(() => {
-    axios.get("https://binar-second-hand.herokuapp.com/api/v1/product/offer/1", {
+  const [dataTawar, setDataTawar] = useState(null);
+
+  // const param = useParams()
+
+  const getTawar = async () => {
+    const res = await axios.get("https://binar-second-hand.herokuapp.com/api/v1/product/offer/3", {
       headers: {
         Authorization: localStorage.getItem("accessToken"),
       },
     })
-    .then((res) => {
-      console.log(res)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  })
-  
+    setDataTawar(res.data.offer)
+  }
+
+  useEffect(() => {
+    getTawar()
+  }, [])
 
   return (
     <div>
@@ -31,7 +33,7 @@ const Diminati = () => {
         {/* Category Mobile View */}
         <CategoryMobile />
         {/* Desktop View */}
-        <DesktopView />
+        <DesktopView dataTawar={dataTawar} />
       </div>
     </div>
     /* Kategori end */

@@ -17,13 +17,13 @@ const Seller = () => {
       setUser(res.data.userProfile)
     })
   }, [])
-
+  
   return (
     <>
       {user !== null ? (
         <div className="flex p-4 shadow-auto justify-between items-center rounded-3xl">
           <div className="flex">
-            <img src="/images/picprofile.png" alt="" className="w-12 h-12" />
+            <img src={user.image_url} alt="" className="w-12 h-12 rounded-xl" />
             <div className="text-profil ml-5">
               <h1 className="text-sm lg:text-xl font-medium">{user.nama}</h1>
               <p className="text-tiny lg:text-sm text-gray-300">{user.kota}</p>

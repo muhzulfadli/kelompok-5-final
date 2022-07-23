@@ -3,6 +3,7 @@ import Category from "./Category";
 import ProductCard from "./ProductCard";
 
 const DesktopView = () => {
+  // console.log(dataTawar);
   return (
     <div className="lg:flex my-8 block">
       <div className="lg:w-1/3">
