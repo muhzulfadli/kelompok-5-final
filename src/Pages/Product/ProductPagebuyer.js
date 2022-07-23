@@ -5,12 +5,12 @@ import ModalTawar from "../../Components/Buyer/ModalTawar";
 import axios from "axios";
 import Content from "../../Components/Buyer/Content";
 
-const ProductPagebuyer = () => {
+const ProductPagebuyer = (props) => {
 
   const [product, setProduct] = useState(null);
 
   const params = useParams()
-
+  console.log(params.id)
   useEffect(() => {
     axios
       .get(
@@ -49,7 +49,7 @@ const ProductPagebuyer = () => {
 
       {/* alert */}
       <Alert setAlertOpen={setAlertOpen} alertOpen={alertOpen} />
-     <Content product={product} setIsOpen={setIsOpen} buttonClick={buttonClick}/>
+     <Content product={product} setIsOpen={setIsOpen} buttonClick={buttonClick} id={params.id} params={params}/>
     </>
   );
 };
