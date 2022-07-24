@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Fade from "./ProductSlider";
+import Fade from "../Buyer/ProductSlider";
 import { AiFillStar } from "react-icons/ai";
 import Mobile from "./Mobile";
 import Seller from "./Seller";
@@ -51,7 +51,7 @@ const Content = ({ product, setIsOpen, buttonClick }) => {
         </div>
       ) : (
         <div className="w-full flex flex-col items-center justify-center">
-          <img src="/images/loading.gif" alt="" />
+          <img src="/images/loading2.gif" alt="" />
           <p className="text-purple4">Lagi loading coy...</p>
         </div>
       )}

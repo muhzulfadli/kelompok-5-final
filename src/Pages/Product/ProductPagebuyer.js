@@ -29,7 +29,8 @@ const ProductPagebuyer = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [params.id])
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [isOpen, setIsOpen] = useState(false);
   const [alertOpen, setAlertOpen] = useState(true);
@@ -39,6 +40,7 @@ const ProductPagebuyer = () => {
     <>
       {/* modal */}
       <ModalTawar
+        product={product}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         setAlertOpen={setAlertOpen}
