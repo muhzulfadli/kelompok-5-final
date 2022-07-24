@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import userSlice from "../../store/user";
 import axios from "axios";
@@ -11,7 +10,6 @@ import RegisterButton from "../../Components/Login/RegisterButton";
 
 const Login = () => {
 
-  const { register, handleSubmit, formState } = useForm();
   const [regStatus, setRegStatus] = useState({
     success: false,
     message: "",
@@ -67,10 +65,7 @@ const Login = () => {
             )}
             {/* Form */}
             <Form
-              handleSubmit={handleSubmit}
               formSubmitHandler={formSubmitHandler}
-              register={register}
-              formState={formState}
             />
           </div>
           <RegisterButton />
