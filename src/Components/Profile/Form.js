@@ -39,13 +39,11 @@ const InfoProfil = () => {
       },
     })
       .then((res) => {
-        console.log(res);
         setNama(res.data.userProfile.nama);
         setKota(res.data.userProfile.kota);
         setAlamat(res.data.userProfile.alamat);
         setNohp(res.data.userProfile.no_handphone);
         setImgProfile(res.data.userProfile.image_url);
-        console.log(res)
       })
       .catch((err) => {
         console.log('ini ada kesalahan')
@@ -70,18 +68,13 @@ const InfoProfil = () => {
         alert("Data telah terkirim");
         window.location.replace("/infoprofile");
       })
-      .catch((err) => {
-        console.log(err);
-        // alert("Data tidak berhasil dikirm");
+      .catch(() => {
+        alert("Data tidak berhasil dikirm");
       });
   };
 
- console.log('imgprofil',imgProfile)
-
   return (
     <div className="App">
-      {console.log(gambar)}
-      {console.log(imgProfile)}
       <div className="relative mt-3 h-auto w-full p-3">
         <button>
           <IoArrowBack

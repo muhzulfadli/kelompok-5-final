@@ -7,22 +7,25 @@ import axios from "axios";
 
 const Diminati = () => {
 
-  const [dataTawar, setDataTawar] = useState(null);
-
-  // const param = useParams()
-
-  const getTawar = async () => {
-    const res = await axios.get("https://binar-second-hand.herokuapp.com/api/v1/product/offer/3", {
-      headers: {
-        Authorization: localStorage.getItem("accessToken"),
-      },
-    })
-    setDataTawar(res.data.offer)
-  }
-
-  useEffect(() => {
-    getTawar()
-  }, [])
+    const [product, setProduct] = useState([]);
+  
+    useEffect(() => {
+      axios
+        .get("https://binar-second-hand.herokuapp.com/api/v1/product")
+        .then((res) => {
+          // console.log(res);
+          if (res.data.products !== null) {
+            setProduct([...res.data.products]);
+          } else {
+            return Promise.reject({
+              message: "error",
+            });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, []);
 
   return (
     <div>
@@ -33,7 +36,7 @@ const Diminati = () => {
         {/* Category Mobile View */}
         <CategoryMobile />
         {/* Desktop View */}
-        <DesktopView dataTawar={dataTawar} />
+        <DesktopView product={product}/>
       </div>
     </div>
     /* Kategori end */

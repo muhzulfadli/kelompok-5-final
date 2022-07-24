@@ -4,37 +4,13 @@ import { AiFillStar } from "react-icons/ai";
 import Mobile from "./Mobile";
 import Seller from "./Seller";
 import Detail from "./Detail";
-import axios from "axios";
-import { useSelector } from "react-redux/es/exports";
 
-const Content = ({ product, setIsOpen, buttonClick ,props,params}) => {
-const [wishlistClicked, setWishlistClicked] = useState(false);
+const Content = ({ product, setIsOpen, buttonClick }) => {
+  const [wishlistClicked, setWishlistClicked] = useState(false);
 
-  const user = useSelector((store) => store.user.data);
-  console.log (user.id)
   const handleWishlist = () => {
-   
-  const data ={
-    product_id = product_id.current.value 
-  }
-  setWishlistClicked((current) => !current);
-    axios.post('http://binar-second-hand.herokuapp.com/api/v1/wishlist',params,
-    {
-       headers : {
-      'content-Type' : 'application/json',
-       'accept' : 'application/json',
-       Authorization : localStorage.getItem("accessToken")
-       },
-    } ,{
-      user_id: user.id,
-      product_id: props?.id
-     },)
-    .then((res) => {
-      console.log(res)
-    })
+    setWishlistClicked((current) => !current);
   };
-
-  console.log(product);
 
   return (
     <div className="container mx-auto w-full lg:max-w-4xl md:py-5">

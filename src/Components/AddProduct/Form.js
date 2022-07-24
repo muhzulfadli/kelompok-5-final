@@ -172,7 +172,7 @@ const Form = (props) => {
           }
         );
         alert("Success add product");
-        navigate("/product/productlist");
+        navigate("/product");
       } catch (error) {
         alert(error.message);
       }
