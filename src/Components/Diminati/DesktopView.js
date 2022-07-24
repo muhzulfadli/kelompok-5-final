@@ -43,7 +43,7 @@ const DesktopView = () => {
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
         {data.productData.map((item, index) => {
           return (
-            <Link to="/product/infopenawaran">
+            <Link to="/product/infopenawaran" key={index}>
               <ProductCard nama={item.nama} harga={item.harga} offer={item.offer} kategori={item.kategori} image={item.image}/>
             </Link>
           )
