@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Title from "../../Components/Diminati/Title";
 import Seller from "../../Components/Product/Seller";
 import CategoryMobile from "../../Components/Diminati/CategoryMobile";
@@ -7,20 +7,25 @@ import axios from "axios";
 
 const Diminati = () => {
 
-  useEffect(() => {
-    axios.get("https://binar-second-hand.herokuapp.com/api/v1/product/offer/1", {
-      headers: {
-        Authorization: localStorage.getItem("accessToken"),
-      },
-    })
-    .then((res) => {
-      console.log(res)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  })
+    const [product, setProduct] = useState([]);
   
+    useEffect(() => {
+      axios
+        .get("https://binar-second-hand.herokuapp.com/api/v1/product")
+        .then((res) => {
+          // console.log(res);
+          if (res.data.products !== null) {
+            setProduct([...res.data.products]);
+          } else {
+            return Promise.reject({
+              message: "error",
+            });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, []);
 
   return (
     <div>
@@ -31,7 +36,7 @@ const Diminati = () => {
         {/* Category Mobile View */}
         <CategoryMobile />
         {/* Desktop View */}
-        <DesktopView />
+        <DesktopView product={product}/>
       </div>
     </div>
     /* Kategori end */

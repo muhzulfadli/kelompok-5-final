@@ -47,7 +47,7 @@ const Dropdown = () => {
             <Menu.Item>
               {({ active }) => (
                 <div
-                  className="text-purple4 flex items-center gap-4 px-4 py-2 text-sm font-medium"
+                  className="w-16 text-purple4 flex items-center gap-4 px-4 py-2 text-sm font-medium"
                 >
                   <img src={user.image_url} alt="profile" className="rounded-full" />
                   {user.nama}
