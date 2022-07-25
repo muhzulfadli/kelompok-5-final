@@ -72,12 +72,12 @@ const ModalTawar = ({product, isOpen, setIsOpen, setAlertOpen, setButtonClick })
           <div className="flex shadow-auto rounded-2xl p-3 bg-[#b8b7b776]">
             <img
               className="w-14 rounded-xl"
-              src={product.product_photos}
+              src={product?.product_photos}
               alt=""
             />
             <div className="ml-4">
-              <h1 className="font-medium text-sm">{product.nama}</h1>
-              <h1 className="text-sm font-normal ">Rp {product.harga}</h1>
+              <h1 className="font-medium text-sm">{product?.nama}</h1>
+              <h1 className="text-sm font-normal ">Rp {product?.harga}</h1>
             </div>
           </div>
           <div className="pt-5 ml-2">

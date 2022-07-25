@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
+import { useForm } from "react-hook-form";
 
 const LoginForm = ({
-  handleSubmit,
-  formSubmitHandler,
-  register,
-  formState
+  formSubmitHandler
 }) => {
+
+  
+  const { register, handleSubmit, formState } = useForm();
 
   const [passwordShow, setPasswordShow] = useState(false);
   const togglePassword = () => {

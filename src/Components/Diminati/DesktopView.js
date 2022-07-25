@@ -1,5 +1,5 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import React, { useEffect, useState } from "react";
 import Category from "./Category";
 import ProductCard from "./ProductCard";
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import data from "../../dummyData";
 
 const DesktopView = () => {
 
-  const [hargaTawar, setHargaTawar] = useState({})
+  // const [hargaTawar, setHargaTawar] = useState({})
 
   // useEffect(() => {
   //   axios.get("https://binar-second-hand.herokuapp.com/api/v1/product/offer/1", 

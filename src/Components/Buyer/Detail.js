@@ -1,6 +1,9 @@
 import React from "react";
+import { AiOutlineStar } from "react-icons/ai";
 
-const Detail = ({ product, handleWishlist, wishlistClicked, buttonClick, AiFillStar, setIsOpen }) => {
+const Detail = ({wishlist, product, handleWishlist, wishlistClicked, buttonClick, AiFillStar, setIsOpen }) => {
+
+  
   return (
     <div className="shadow-auto rounded-lg p-5 md:block hidden">
       <div className="flex justify-between">
@@ -13,11 +16,9 @@ const Detail = ({ product, handleWishlist, wishlistClicked, buttonClick, AiFillS
         </div>
         <div
           onClick={handleWishlist}
-          className={`text-2xl ${
-            wishlistClicked ? "text-purple4" : "text-neutral2"
-          } hover:text-purple4 cursor-pointer`}
+          className={`text-2xl text-purple4 hover:text-purple4 cursor-pointer`}
         >
-          <AiFillStar />
+          {wishlistClicked ? <AiFillStar /> : <AiOutlineStar className="text-purple4" /> }
         </div>
       </div>
 
