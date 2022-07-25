@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const DetailProduct = ({product}) => {
+const DetailProduct = () => {
   return (
     <div className="col-span-2">
       <div className="shadow-auto hidden lg:block rounded-lg p-5">

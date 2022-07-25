@@ -17,7 +17,7 @@ const Seller = () => {
       setUser(res.data.userProfile)
     })
   }, [])
-
+  
   return (
     <>
       {user !== null ? (
