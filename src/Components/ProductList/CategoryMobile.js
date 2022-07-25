@@ -5,7 +5,7 @@ import { BiCube, BiHeart, BiDollar } from "react-icons/bi";
 
 const CategoryMobile = () => {
   return (
-    <div className="lg:hidden flex gap-4 h-full my-8">
+    <div className="lg:hidden flex my-4 grid grid-cols-3 gap-2">
       <div className="flex items-center gap-2 bg-purple4 px-4 py-4 rounded-xl text-neutral1">
         <BiCube className="font-bold text-xl" />
         <p className="text-sm">Produk</p>

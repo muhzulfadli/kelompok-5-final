@@ -32,8 +32,6 @@ const ProductPreview = () => {
       });
   }, [params.id]);
 
-  console.log(product);
-
   return (
     <div className="container mx-auto w-fit lg:max-w-4xl md:my-5">
       <div className="grid grid-cols-3 lg:grid-cols-5 gap-6">

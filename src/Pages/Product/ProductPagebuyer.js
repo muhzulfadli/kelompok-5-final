@@ -10,14 +10,12 @@ const ProductPagebuyer = (props) => {
   const [product, setProduct] = useState(null);
 
   const params = useParams()
-  console.log(params.id)
   useEffect(() => {
     axios
       .get(
         `https://binar-second-hand.herokuapp.com/api/v1/product/${params.id}`
       )
       .then((res) => {
-        console.log(res);
         if (res.data !== null) {
           setProduct({ ...res.data.product });
         } else {

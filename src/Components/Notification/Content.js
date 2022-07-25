@@ -21,9 +21,9 @@ const Content = () => {
         <div className="w-full flex py-4 gap-4">
           <div>
             <img
-              src="/images/picprofile.png"
+              src="/images/jamtangan.png"
               alt=""
-              className="rounded-md cover"
+              className="rounded-md cover w-16"
             />
           </div>
           <div className="flex flex-col w-full">
@@ -42,9 +42,9 @@ const Content = () => {
         <div className="flex py-6 gap-4 border-t-[1px] border-gray-300">
           <div>
             <img
-              src="/images/picprofile.png"
+              src="/images/hoodiehitam.jpg"
               alt=""
-              className="rounded-md cover"
+              className="rounded-md cover w-16"
             />
           </div>
           <div className="flex flex-col w-full">

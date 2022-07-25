@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const Seller = () => {  
+const Seller = (products) => {  
 
   const [user, setUser] = useState({})
 
@@ -23,7 +23,7 @@ const Seller = () => {
         <img className="w-12" src={user.image_url} alt="foto profile" />
         <div className="ml-4">
           <h1 className="font-medium text-sm">{user.nama}</h1>
-          <h1 className="text-sm font-normal text-neutral3">kota</h1>
+          <h1 className="text-sm font-normal text-neutral3">{user.kota}</h1>
         </div>
       </div>
     </div>

@@ -1,23 +1,117 @@
-import React, { useState } from "react";
-import Fade from "../Buyer/ProductSlider";
+import React, { useEffect, useState } from "react";
+import Fade from "../Buyer/ProductSlider"
 import { AiFillStar } from "react-icons/ai";
 import Mobile from "./Mobile";
 import Seller from "./Seller";
 import Detail from "./Detail";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import wishlistSlice from "../../store/wishlist";
+import { useDispatch, useSelector } from "react-redux";
 
-const Content = ({ product, setIsOpen, buttonClick }) => {
+const Content = ({setIsOpen, buttonClick }) => {
+
+  const param = useParams()
+  const [profile, setProfile] = useState();
   const [wishlistClicked, setWishlistClicked] = useState(false);
 
-  const handleWishlist = () => {
-    setWishlistClicked((current) => !current);
-  };
+  useEffect(() => {
+    axios
+      .get(
+        `https://binar-second-hand.herokuapp.com/api/v1/profile`, {
+          headers: {
+            Authorization: localStorage.getItem("accessToken"),
+          },
+        }
+      )
+      .then((res) => {
+        setProfile(res.data.userProfile)
+      });
+  }, [param.id]);
+
+  const [product, setProduct] = useState(null);
+  const params = useParams()
+  
+  useEffect(() => {
+    axios
+      .get(
+        `https://binar-second-hand.herokuapp.com/api/v1/product/${params.id}`
+      )
+      .then((res) => {
+        if (res.data !== null) {
+          setProduct({ ...res.data.product });
+        } else {
+          return Promise.reject({
+            message: "error",
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const [wishlist, setWishlist] = useState([])
+
+  useEffect(() => {
+    axios.get("https://binar-second-hand.herokuapp.com/api/v1/wishlist", 
+    {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    })
+    .then(res => {
+      // console.log(res)
+      setWishlist(res.data.wishlistAll)
+    })
+  }, [])
+
+  const handleWishlist = () => {   
+
+    
+    const postData = {
+      user_id: profile.user_id,
+      product_id: product.id
+    }
+
+    if (wishlistClicked === false) {
+      axios.post("https://binar-second-hand.herokuapp.com/api/v1/wishlist", postData,
+      {
+        headers: {
+          Authorization: localStorage.getItem("accessToken"),
+        }
+      })
+      .then((res) => {
+        console.log("ini",res)
+        console.log("Berhasil ditambahkan ke wishlist");
+        setWishlistClicked(true);
+      })
+      .catch((err) => {
+        console.log("Gagal menambahkan ke wishlist")
+      });
+    } else if (wishlistClicked === true) {
+      axios.delete(`https://binar-second-hand.herokuapp.com/api/v1/wishlist/${param.id}`, {
+        headers: {
+          Authorization: localStorage.getItem("accessToken"),
+        }
+      })
+      .then((res) => {
+        console.log("Berhasil dihapus dari wishlist");
+        setWishlistClicked(false)
+      })
+      .catch((err) => {
+        console.log("gagal menghapus dari wishlist")
+      })
+    } 
+  }
 
   return (
     <div className="container mx-auto w-full lg:max-w-4xl md:py-5">
       {product !== null ? (
         <div className="grid grid-cols-3 lg:grid-cols-5 gap-6">
           <div className="col-span-3">
-            <Fade />
+            <Fade product ={product} />
             {/* Mobile View */}
             <Mobile
               handleWishlist={handleWishlist}
@@ -39,6 +133,7 @@ const Content = ({ product, setIsOpen, buttonClick }) => {
           <div className="col-span-2">
             {/* Detail dan Button */}
             <Detail
+              wishlist={wishlist}
               product={product}
               handleWishlist={handleWishlist}
               wishlistClicked={wishlistClicked}
@@ -46,7 +141,7 @@ const Content = ({ product, setIsOpen, buttonClick }) => {
               AiFillStar={AiFillStar}
               setIsOpen={setIsOpen}
             />
-            <Seller />
+            <Seller product={product}/>
           </div>
         </div>
       ) : (
