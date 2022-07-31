@@ -24,26 +24,45 @@ export class Fade extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
     };
+    // console.log(this.props.product);
     return (
       <div className="relative overflow-hidden">
         <Slider ref={(c) => (this.slider = c)} {...settings}>
           <div>
-            <img className="w-full" src="/images/jamtangan.png" alt="produk" />
-          </div>
-          <div>
             <img
               className="w-full"
-              src="/images/JamtanganBiru.png"
+              src={
+                this.props.product.product_photos[0]
+                  ? this.props.product.product_photos[0]
+                  : "/images/Jamtangan.png"
+              }
               alt="produk"
             />
           </div>
           <div>
-            <img className="w-full" src="/images/jamtangan.png" alt="produk" />
+            <img
+              className="w-full"
+              src={
+                this.props.product.product_photos[1] ? this.props.product.product_photos[1] : this.props.product.product_photos[0] ? this.props.product.product_photos[0] : "/images/Jamtangan.png" 
+              }
+              alt="produk"
+            />
           </div>
           <div>
             <img
               className="w-full"
-              src="/images/JamtanganBiru.png"
+              src={
+                this.props.product.product_photos[2] ? this.props.product.product_photos[2] : this.props.product.product_photos[0] ? this.props.product.product_photos[0] : "/images/Jamtangan.png" 
+              }
+              alt="produk"
+            />
+          </div>
+          <div>
+            <img
+              className="w-full"
+              src={
+                this.props.product.product_photos[3] ? this.props.product.product_photos[3] : this.props.product.product_photos[0] ? this.props.product.product_photos[0] : "/images/Jamtangan.png" 
+              }
               alt="produk"
             />
           </div>

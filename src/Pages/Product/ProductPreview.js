@@ -8,42 +8,64 @@ import { Fade } from "./Slider"
 
 const ProductPreview = () => {
 
-  const [product, setProduct] = useState(null);
-
   const params = useParams();
 
+  const [product, setProduct] = useState(null);
   useEffect(() => {
     axios
       .get(
         `https://binar-second-hand.herokuapp.com/api/v1/product/${params.id}`
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data !== null) {
           setProduct({ ...res.data.product });
         } else {
-      //     return Promise.reject({
-      //       message: "error",
-      //     });
+          return Promise.reject({
+            message: "error",
+          });
         }
-      // })
-      // .catch((error) => {
-      //   console.log(error);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-  }, [params.id]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const [user, setUser] = useState({})
+  useEffect(() => {
+    axios.get("https://binar-second-hand.herokuapp.com/api/v1/profile", 
+    {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    })
+    .then(res => {
+      setUser(res.data.userProfile)
+    })
+  }, [])
+
+
 
   return (
     <div className="container mx-auto w-fit lg:max-w-4xl md:my-5">
-      <div className="grid grid-cols-3 lg:grid-cols-5 gap-6">
-        <div className="col-span-3">
-          <Fade />
-          {/* mobile responsive */}
-          <Mobile product={product} />
-          <ProductDescription product={product} />
+      {product !== null ? (
+        <div className="grid grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="col-span-3">
+            <Fade product={product} />
+            {/* mobile responsive */}
+            <Mobile product={product} user={user} />
+            <ProductDescription product={product} />
+          </div>
+          {/* Detail Product and Button */}
+          <DetailProduct product={product} user={user} />
         </div>
-        {/* Detail Product and Button */}
-        <DetailProduct product={product} />
-      </div>
+      ) : (
+        <div className="w-full flex flex-col items-center justify-center">
+          <img src="/images/loading2.gif" alt="" />
+          <p className="text-purple4">Lagi loading coy...</p>
+        </div>
+      )}
     </div>
   );
 }

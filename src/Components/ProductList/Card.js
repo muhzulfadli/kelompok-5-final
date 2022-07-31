@@ -25,6 +25,22 @@ const Card = () => {
         console.log(error);
       });
   }, []);
+
+  const deleteProduct = (id) => {
+    axios
+      .delete(
+        `https://binar-second-hand.herokuapp.com/api/v1/product/${id}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem("accessToken"),
+          },
+        }
+      )
+      .then((res) => {
+        setProduct(product.filter((product) => product.id !== id));
+        alert(res.data.message);
+      })
+  }
   
   return (
     <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
@@ -55,7 +71,7 @@ const Card = () => {
       </Link>
       {product.map((data) => {
         return (
-          <ProductCard key={data.id} data={data} />
+          <ProductCard key={data.id} data={data} deleteProduct={deleteProduct} />
         );
       })}
     </div>

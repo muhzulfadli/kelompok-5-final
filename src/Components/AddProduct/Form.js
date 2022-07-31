@@ -6,7 +6,7 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import tw from "tailwind-styled-components";
 import { BsPlusLg } from "react-icons/bs";
-import productSlice from "././../../store/product";
+import productSlice from "../../store/product";
 import axios from "axios";
 
 // Style for Preview
@@ -145,7 +145,7 @@ const Form = (props) => {
       harga: inputPrice.current.value,
       deskripsi: inputDescription.current.value,
     };
-    console.log(submittedProduct);
+    // console.log(submittedProduct);
 
     for (let data in submittedProduct) {
       formData.append(data, submittedProduct[data]);
@@ -171,6 +171,7 @@ const Form = (props) => {
             },
           }
         );
+        // dispatch(productSlice.actions.addProduct(formData));
         alert("Success add product");
         navigate("/product");
       } catch (error) {
