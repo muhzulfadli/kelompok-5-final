@@ -2,19 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FiEdit } from "react-icons/fi";
 
-const Mobile = (product) => {
+const Mobile = ({product, user}) => {
   return (
     <div>
       <div className="container mx-auto max-w-4xl mt-3 -translate-y-12">
         <div className="shadow-auto rounded-lg p-4 bg-white text-base font-medium h-28 mx-4 px-3 md:hidden">
           <div className="flex justify-between">
             <div>
-              <h2 className="text-base font-medium">nama</h2>
-              <p className="text-sm font-normal text-neutral3">kategori</p>
-              <p className="font-normal text-base">Rp 80000</p>
+              <h2 className="text-base font-medium">{product.nama}</h2>
+              <p className="text-sm font-normal text-neutral3">{product.categories}</p>
+              <p className="font-normal text-base">Rp {product.harga}</p>
             </div>
             <div className="lg:hidden">
-              <Link to="/editproduct">
+              <Link to="/product/editproduct">
                 <FiEdit className="text-2xl text-purple4 cursor-pointer" />
               </Link>
             </div>
@@ -26,8 +26,8 @@ const Mobile = (product) => {
         <div className="flex md:hidden shadow-auto rounded-lg bg-white p-4 text-base font-medium mx-4">
           <img className="w-12" src="/images/picprofile.png" alt="" />
           <div className="ml-4">
-            <h1 className="font-medium text-sm">Nama Penjual</h1>
-            <h1 className="text-sm font-normal text-neutral3">kota</h1>
+            <h1 className="font-medium text-sm">{user.nama}</h1>
+            <h1 className="text-sm font-normal text-neutral3">{user.kota}</h1>
           </div>
         </div>
       </div>

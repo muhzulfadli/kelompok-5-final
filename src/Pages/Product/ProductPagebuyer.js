@@ -47,7 +47,7 @@ const ProductPagebuyer = (props) => {
 
       {/* alert */}
       <Alert setAlertOpen={setAlertOpen} alertOpen={alertOpen} />
-     <Content product={product} setIsOpen={setIsOpen} buttonClick={buttonClick} id={params.id} params={params}/>
+      <Content product={product} setIsOpen={setIsOpen} buttonClick={buttonClick} id={params.id} params={params}/>
     </>
   );
 };
